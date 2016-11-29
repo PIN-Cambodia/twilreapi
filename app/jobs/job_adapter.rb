@@ -30,7 +30,6 @@ class JobAdapter
   private
 
   def perform_later_active_job(*args)
-    Rails.logger.info("Enqueuing Job to queue: #{queue_name} with args: #{args}")
     active_job_worker_class.set(:queue => queue_name).perform_later(*args)
   end
 
