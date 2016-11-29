@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
+  remote: https://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
   revision: 66d520ce6829e697f8c97041571f935183fe2f4c
   specs:
     twilreapi-active_call_router-pin_cambodia (0.1.0)
@@ -7,26 +7,26 @@ GIT
       twilreapi-active_call_router
 
 GIT
-  remote: git://github.com/dwilkie/twilreapi-active_call_router.git
+  remote: https://github.com/dwilkie/twilreapi-active_call_router.git
   revision: 0ed059e71766a1d427ebae8e9545c5b28cf0d686
   specs:
     twilreapi-active_call_router (0.1.0)
 
 GIT
-  remote: git://github.com/dwilkie/twilreapi-worker.git
+  remote: https://github.com/dwilkie/twilreapi-worker.git
   revision: 3d88d2719d5b3768c0e99079cba3be4c46deb3d1
   specs:
     twilreapi-worker (0.1.0)
 
 GIT
-  remote: git://github.com/numerex/bitmask_attributes.git
+  remote: https://github.com/numerex/bitmask_attributes.git
   revision: 0bb0d9993aa6cb3114daa0c118c2bc70a032847c
   specs:
     bitmask_attributes (1.0.0)
       activerecord (>= 3.1)
 
 GIT
-  remote: git://github.com/refile/refile-s3.git
+  remote: https://github.com/refile/refile-s3.git
   revision: 78a74b60a597dd1174b0599be919689d41d5f118
   specs:
     refile-s3 (0.2.0)
@@ -34,7 +34,7 @@ GIT
       refile (~> 0.6.0)
 
 GIT
-  remote: git://github.com/refile/refile.git
+  remote: https://github.com/refile/refile.git
   revision: d7a42dcd7cf631ba94b01231f535bda061f6af92
   specs:
     refile (0.6.2)
@@ -43,7 +43,7 @@ GIT
       sinatra (>= 1.4.5)
 
 GIT
-  remote: git://github.com/sinatra/sinatra.git
+  remote: https://github.com/sinatra/sinatra.git
   revision: 63e81bc539b36778c6bd50a303750ab52ee2b2fb
   specs:
     rack-protection (2.0.0.beta2)
@@ -55,7 +55,7 @@ GIT
       tilt (~> 2.0)
 
 GIT
-  remote: git://github.com/tawan/active-elastic-job.git
+  remote: https://github.com/tawan/active-elastic-job.git
   revision: 7023166936c2e34e35f35d6b2fdbc60f07632fdd
   specs:
     active_elastic_job (2.0.0)
@@ -276,8 +276,5 @@ DEPENDENCIES
   twilreapi-active_call_router-pin_cambodia!
   twilreapi-worker!
 
-RUBY VERSION
-   ruby 2.3.1p112
-
 BUNDLED WITH
-   1.12.5
+   1.13.6
