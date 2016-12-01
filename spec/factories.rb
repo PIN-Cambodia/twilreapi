@@ -28,13 +28,30 @@ FactoryGirl.define do
     initialize_with { new(File.read(ActiveSupport::TestCase.fixture_path + "/freeswitch_cdr.json")) }
   end
 
+  factory :usage_record_collection, :class => Usage::Record::Collection do
+    skip_create
+    account
+    category "calls"
+    start_date { Date.new(2015, 9, 30) }
+    end_date { Date.new(2015, 10, 31) }
+  end
+
+  factory :calls_usage_record, :class => Usage::Record::Calls do
+    skip_create
+    account
+  end
+
   factory :call_data_record do
     transient do
       cdr { build(:freeswitch_cdr) }
+      account { build(:account) }
+      external_id { generate(:external_id) }
     end
 
     after(:build) do |call_data_record, evaluator|
-      call_data_record.phone_call ||= build(:phone_call, :external_id => evaluator.cdr.uuid)
+      call_data_record.phone_call ||= build(
+        :phone_call, :account => evaluator.account, :external_id => evaluator.external_id
+      )
     end
 
     trait :inbound do
@@ -45,12 +62,23 @@ FactoryGirl.define do
       direction "outbound"
     end
 
+    trait :billable do
+      bill_sec 1
+      answer_time { Time.now }
+    end
+
+    trait :not_billable do
+      bill_sec 0
+      answer_time nil
+    end
+
     duration_sec { cdr.duration_sec }
     bill_sec { cdr.bill_sec }
     direction { cdr.direction }
     hangup_cause { cdr.hangup_cause }
     start_time { Time.at(cdr.start_epoch.to_i) }
     end_time { Time.at(cdr.end_epoch.to_i) }
+    price { Money.new(0) }
 
     file do
       Refile::FileDouble.new(
