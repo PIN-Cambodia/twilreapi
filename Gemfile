@@ -20,6 +20,8 @@ gem 'bitmask_attributes', :github => "numerex/bitmask_attributes"
 
 gem 'twilreapi-active_call_router', :github => "dwilkie/twilreapi-active_call_router"
 gem 'twilreapi-active_call_router-pin_cambodia', :github => "dwilkie/twilreapi-active_call_router-pin_cambodia"
+gem 'twilreapi-active_biller', :github => "dwilkie/twilreapi-active_biller"
+gem 'twilreapi-active_biller-pin_cambodia', :github => "dwilkie/twilreapi-active_biller-pin_cambodia"
 
 # Use active_elastic_job as queue adapter and excute jobs in this application
 gem 'active_elastic_job', :github => "tawan/active-elastic-job"
