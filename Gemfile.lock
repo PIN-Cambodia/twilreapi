@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/dwilkie/twilreapi-active_call_router-somleng_cambodia.git
-  revision: a44637263cfa5da1939e5339dd76efbb767d3411
+  revision: 3c9f93887c7353a0527803bea463f99f7f85efcf
   specs:
     twilreapi-active_call_router-somleng_cambodia (0.1.0)
       torasup
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: git://github.com/sinatra/sinatra.git
-  revision: 6835f4e21cf0f6c1e9a18a5106363b679a9d7e22
+  revision: 12b93f99012ddcd0f6bca3913dadb67b49760f67
   specs:
     rack-protection (2.0.0.beta2)
       rack
