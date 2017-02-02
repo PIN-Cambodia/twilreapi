@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/dwilkie/twilreapi-active_call_router-somleng_cambodia.git
-  revision: 9bed021e12cdc2af8ab5a96949092a4e18cffd4e
+  revision: 31220131fa2b7e5e22e38b1c1e62ebd0641d3151
   specs:
     twilreapi-active_call_router-somleng_cambodia (0.1.0)
       torasup
