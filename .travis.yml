@@ -16,7 +16,7 @@ deploy:
   region: ap-southeast-1
   app: twilreapi
   env: twilreapi-web
-  bucket_name: pin-somleng-ci-deployment
+  bucket_name: pin-somlengci
   on:
     repo: dwilkie/twilreapi
     branch: somleng.ews1294.info
@@ -29,7 +29,7 @@ deploy:
   region: ap-southeast-1
   app: twilreapi
   env: twilreapi-worker
-  bucket_name: pin-somleng-ci-deployment
+  bucket_name: pin-somlengci
   on:
     repo: dwilkie/twilreapi
     branch: somleng.ews1294.info
@@ -42,7 +42,7 @@ deploy:
   region: ap-southeast-1
   app: twilreapi
   env: twilreapi-cdr-processor
-  bucket_name: pin-somleng-ci-deployment
+  bucket_name: pin-somlengci
   on:
     repo: dwilkie/twilreapi
     branch: somleng.ews1294.info
