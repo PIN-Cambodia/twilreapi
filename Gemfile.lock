@@ -6,6 +6,15 @@ GIT
     phony (2.15.42)
 
 GIT
+  remote: https://github.com/dwilkie/torasup.git
+  revision: f519d6af039f37c6e1bbfa637e933b233b73439d
+  specs:
+    torasup (0.1.0)
+      countries (>= 1.1.0)
+      deep_merge
+      phony (>= 2.14.14)
+
+GIT
   remote: https://github.com/dwilkie/twilreapi-active_biller-pin_cambodia.git
   revision: d2005743efb08fb5298571fca3b99d96f359f51a
   specs:
@@ -267,10 +276,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.7)
-    torasup (0.1.0)
-      countries (>= 1.1.0)
-      deep_merge
-      phony (>= 2.14.14)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -307,6 +312,7 @@ DEPENDENCIES
   sinatra!
   spring
   spring-commands-rspec
+  torasup!
   twilreapi-active_biller!
   twilreapi-active_biller-pin_cambodia!
   twilreapi-active_call_router!

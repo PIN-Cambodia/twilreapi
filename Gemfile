@@ -15,6 +15,7 @@ gem 'puma'
 gem 'aasm'
 gem 'phony_rails'
 gem 'phony', :github => "dwilkie/phony", :branch => "add_telesom_prefix_for_somalia"
+gem 'torasup', :github => "dwilkie/torasup"
 gem 'money-rails'
 
 gem 'refile', :github => "refile/refile", :require => "refile/rails"
