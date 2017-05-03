@@ -14,8 +14,7 @@ gem 'doorkeeper'
 gem 'puma'
 gem 'aasm'
 gem 'phony_rails'
-gem 'phony', :github => "dwilkie/phony"
-gem 'torasup', :github => "dwilkie/torasup"
+gem 'phony'
 gem 'money-rails'
 
 gem 'refile', :github => "refile/refile", :require => "refile/rails"

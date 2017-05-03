@@ -1,19 +1,4 @@
 GIT
-  remote: https://github.com/dwilkie/phony.git
-  revision: 68bf631daa2ed5ff157530b61ecad7ab50f6e264
-  specs:
-    phony (2.15.43)
-
-GIT
-  remote: https://github.com/dwilkie/torasup.git
-  revision: 23ba77a8582b7150a8b9d36c7318b157632914c9
-  specs:
-    torasup (0.1.0)
-      countries (>= 1.1.0)
-      deep_merge
-      phony (>= 2.14.14)
-
-GIT
   remote: https://github.com/dwilkie/twilreapi-active_biller-pin_cambodia.git
   revision: d2005743efb08fb5298571fca3b99d96f359f51a
   specs:
@@ -29,10 +14,10 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
-  revision: 358db4ebdf5b55efb9e6bb8fc249b578f48ae94c
+  revision: 64416cb1471da249e1447174a56eb063d33a033f
   specs:
     twilreapi-active_call_router-pin_cambodia (0.1.0)
-      torasup
+      torasup (~> 0.1.1)
       twilreapi-active_call_router
 
 GIT
@@ -194,6 +179,7 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pg (0.19.0)
+    phony (2.15.44)
     phony_rails (0.14.4)
       activesupport (>= 3.0)
       phony (~> 2.15)
@@ -275,6 +261,10 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.7)
+    torasup (0.1.1)
+      countries (>= 1.1.0)
+      deep_merge
+      phony (>= 2.15.43)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -297,7 +287,7 @@ DEPENDENCIES
   foreman
   money-rails
   pg
-  phony!
+  phony
   phony_rails
   pry
   puma
@@ -311,7 +301,6 @@ DEPENDENCIES
   sinatra!
   spring
   spring-commands-rspec
-  torasup!
   twilreapi-active_biller!
   twilreapi-active_biller-pin_cambodia!
   twilreapi-active_call_router!
