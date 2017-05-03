@@ -1,13 +1,12 @@
 GIT
   remote: https://github.com/dwilkie/phony.git
-  revision: 0ef34e767cbef812695ff35d2196cd152b3c0002
-  branch: add_telesom_prefix_for_somalia
+  revision: 68bf631daa2ed5ff157530b61ecad7ab50f6e264
   specs:
-    phony (2.15.42)
+    phony (2.15.43)
 
 GIT
   remote: https://github.com/dwilkie/torasup.git
-  revision: f519d6af039f37c6e1bbfa637e933b233b73439d
+  revision: 23ba77a8582b7150a8b9d36c7318b157632914c9
   specs:
     torasup (0.1.0)
       countries (>= 1.1.0)
@@ -30,7 +29,7 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
-  revision: 30f9dd129b0736237d08831dcde375960e92aea9
+  revision: 358db4ebdf5b55efb9e6bb8fc249b578f48ae94c
   specs:
     twilreapi-active_call_router-pin_cambodia (0.1.0)
       torasup

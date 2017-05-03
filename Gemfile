@@ -14,7 +14,7 @@ gem 'doorkeeper'
 gem 'puma'
 gem 'aasm'
 gem 'phony_rails'
-gem 'phony', :github => "dwilkie/phony", :branch => "add_telesom_prefix_for_somalia"
+gem 'phony', :github => "dwilkie/phony"
 gem 'torasup', :github => "dwilkie/torasup"
 gem 'money-rails'
 
