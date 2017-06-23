@@ -9,5 +9,45 @@ addons:
 before_script:
 - psql -c 'create database twilreapi_test;' -U postgres
 - psql -U postgres -c "create extension pgcrypto"
+deploy:
+- provider: elasticbeanstalk
+  edge: true
+  access-key-id:
+    secure: "aaXK/Efm5Un5fuc8jgc/trM7IfOX2H67pBoXMyAk8ns6IGx8aRALOcKyek4pa9EXTY7du7kDIAlvnFaUhJ/deL3qlvCyJP1kNTKmoWlOfy//1IRjfXKViQnfmagSmCe8mOc0AScTDDPqIGUt+2UtAECLN7JcGbppqs9+9o5gTFm61nq3N5WxdEfiFnoTLw6pQxASNrXYmdLPdCp4RDQuPfGixTr0kmYgtURysLTALSZ/YUzSx23iScMfyAodRyvckKlT1GzxGKREuK8jO7cwIYEEeQh7kXHjQEeuag/WbDbT+rSJwt09IZipkLJhFR30jGCDCWmd/NpXT99w5fyi0bsDb7Q/B2/TQ0Z5yrEUDP5TRa5hFprst3izUqOp7hKls+lY3qGM5y9eqiDUrccIY2ryg9GDxzPNVOvZ1m4corjnPeSa1ADTs/8j5hIx2CAw5UbNchjaaNlOJw0OG3rH1F0HvzKq2O4kqfK/swBItPV8O58u0LP/2vT+kqlNHPXZds+aQ5NUuBsUCTbVUzxudTvh5M5OzOvLhpcl941ZK/keZ7F1YWJVAeHt2JzCKulyI/AbNp8yRiuTaT2iaGc0/XETXeOO9QFgRncFuXyozYE8YbsUvAkvGig4Xlz+QaesIgrlu4p1mIyzTaqBefKflIsJIIn0sOQyjr9tiNle358="
+  secret-access-key:
+    secure: "DyM8ddqMj1pDqhQRu1IkG+AMhcyfK3oixu3GB5J//4h7Qj9KLYtuQ+W1tnGgKcfSzewepnJt5Y5oRlxvRCtpx8XSNzpzE+8B5lxNFydRMV/OA3rgL4atdsYPCvI+Kz5gAYkkkzIFkLuzDIicMwnsK0V1noHTcRxQCoLVuFaAqZYHdypw6T6sywSFRbIGbr9wHiqTZ5GwfJYfgJw9ISomMCpfbo1DIUwh/PM9BHIMnbDStMbIy6Mz+d8mcExaq/jvaJiMX5qE8bz1FvhWAnCW43NjhBAYHEwozLAHkukxvJJrOkz4AwfgJ+5fJ7xTXT4GdwaMo7q5FP0Y9IPxBHUJqK+73/K1E4Jvfey2/gfrZlIKM7UhWMsccMz3wYkH69uk4hkhDmLCSzTyx4csUpHPBWh1xxnBNFVs87DskQh7FwwTllxykIfFjJ740bHAIek+T/BMi74vZ9IEuV5/L+7WOzCv07iXLiEmAHEmpX/wpgwlnIJb5uiRIxHW/+AuVa4UB3N/yqZtHIWD0FWCXL2rq8twDo7bUBAyS/ITShw/b1lAIg/2j5+XoqvH1J7eEuouf2SXeMqjykQif18ARmAKwm2JBcMLrIrHMDTfBFUCqZx+3pAfJnM0pbJVwfclE+8EmO8m+rIZIpmkFDVxsUWbffvxcWyQyrczG5ZTwxUsDnA="
+  region: ap-southeast-1
+  app: twilreapi
+  env: twilreapi-web
+  bucket_name: unicef-io-travis
+  on:
+    repo: dwilkie/twilreapi
+    branch: somleng.unicef.io
+- provider: elasticbeanstalk
+  edge: true
+  access-key-id:
+    secure: "aaXK/Efm5Un5fuc8jgc/trM7IfOX2H67pBoXMyAk8ns6IGx8aRALOcKyek4pa9EXTY7du7kDIAlvnFaUhJ/deL3qlvCyJP1kNTKmoWlOfy//1IRjfXKViQnfmagSmCe8mOc0AScTDDPqIGUt+2UtAECLN7JcGbppqs9+9o5gTFm61nq3N5WxdEfiFnoTLw6pQxASNrXYmdLPdCp4RDQuPfGixTr0kmYgtURysLTALSZ/YUzSx23iScMfyAodRyvckKlT1GzxGKREuK8jO7cwIYEEeQh7kXHjQEeuag/WbDbT+rSJwt09IZipkLJhFR30jGCDCWmd/NpXT99w5fyi0bsDb7Q/B2/TQ0Z5yrEUDP5TRa5hFprst3izUqOp7hKls+lY3qGM5y9eqiDUrccIY2ryg9GDxzPNVOvZ1m4corjnPeSa1ADTs/8j5hIx2CAw5UbNchjaaNlOJw0OG3rH1F0HvzKq2O4kqfK/swBItPV8O58u0LP/2vT+kqlNHPXZds+aQ5NUuBsUCTbVUzxudTvh5M5OzOvLhpcl941ZK/keZ7F1YWJVAeHt2JzCKulyI/AbNp8yRiuTaT2iaGc0/XETXeOO9QFgRncFuXyozYE8YbsUvAkvGig4Xlz+QaesIgrlu4p1mIyzTaqBefKflIsJIIn0sOQyjr9tiNle358="
+  secret-access-key:
+    secure: "DyM8ddqMj1pDqhQRu1IkG+AMhcyfK3oixu3GB5J//4h7Qj9KLYtuQ+W1tnGgKcfSzewepnJt5Y5oRlxvRCtpx8XSNzpzE+8B5lxNFydRMV/OA3rgL4atdsYPCvI+Kz5gAYkkkzIFkLuzDIicMwnsK0V1noHTcRxQCoLVuFaAqZYHdypw6T6sywSFRbIGbr9wHiqTZ5GwfJYfgJw9ISomMCpfbo1DIUwh/PM9BHIMnbDStMbIy6Mz+d8mcExaq/jvaJiMX5qE8bz1FvhWAnCW43NjhBAYHEwozLAHkukxvJJrOkz4AwfgJ+5fJ7xTXT4GdwaMo7q5FP0Y9IPxBHUJqK+73/K1E4Jvfey2/gfrZlIKM7UhWMsccMz3wYkH69uk4hkhDmLCSzTyx4csUpHPBWh1xxnBNFVs87DskQh7FwwTllxykIfFjJ740bHAIek+T/BMi74vZ9IEuV5/L+7WOzCv07iXLiEmAHEmpX/wpgwlnIJb5uiRIxHW/+AuVa4UB3N/yqZtHIWD0FWCXL2rq8twDo7bUBAyS/ITShw/b1lAIg/2j5+XoqvH1J7eEuouf2SXeMqjykQif18ARmAKwm2JBcMLrIrHMDTfBFUCqZx+3pAfJnM0pbJVwfclE+8EmO8m+rIZIpmkFDVxsUWbffvxcWyQyrczG5ZTwxUsDnA="
+  region: ap-southeast-1
+  app: twilreapi
+  env: twilreapi-worker
+  bucket_name: unicef-io-travis
+  on:
+    repo: dwilkie/twilreapi
+    branch: somleng.unicef.io
+- provider: elasticbeanstalk
+  edge: true
+  access-key-id:
+    secure: "aaXK/Efm5Un5fuc8jgc/trM7IfOX2H67pBoXMyAk8ns6IGx8aRALOcKyek4pa9EXTY7du7kDIAlvnFaUhJ/deL3qlvCyJP1kNTKmoWlOfy//1IRjfXKViQnfmagSmCe8mOc0AScTDDPqIGUt+2UtAECLN7JcGbppqs9+9o5gTFm61nq3N5WxdEfiFnoTLw6pQxASNrXYmdLPdCp4RDQuPfGixTr0kmYgtURysLTALSZ/YUzSx23iScMfyAodRyvckKlT1GzxGKREuK8jO7cwIYEEeQh7kXHjQEeuag/WbDbT+rSJwt09IZipkLJhFR30jGCDCWmd/NpXT99w5fyi0bsDb7Q/B2/TQ0Z5yrEUDP5TRa5hFprst3izUqOp7hKls+lY3qGM5y9eqiDUrccIY2ryg9GDxzPNVOvZ1m4corjnPeSa1ADTs/8j5hIx2CAw5UbNchjaaNlOJw0OG3rH1F0HvzKq2O4kqfK/swBItPV8O58u0LP/2vT+kqlNHPXZds+aQ5NUuBsUCTbVUzxudTvh5M5OzOvLhpcl941ZK/keZ7F1YWJVAeHt2JzCKulyI/AbNp8yRiuTaT2iaGc0/XETXeOO9QFgRncFuXyozYE8YbsUvAkvGig4Xlz+QaesIgrlu4p1mIyzTaqBefKflIsJIIn0sOQyjr9tiNle358="
+  secret-access-key:
+    secure: "DyM8ddqMj1pDqhQRu1IkG+AMhcyfK3oixu3GB5J//4h7Qj9KLYtuQ+W1tnGgKcfSzewepnJt5Y5oRlxvRCtpx8XSNzpzE+8B5lxNFydRMV/OA3rgL4atdsYPCvI+Kz5gAYkkkzIFkLuzDIicMwnsK0V1noHTcRxQCoLVuFaAqZYHdypw6T6sywSFRbIGbr9wHiqTZ5GwfJYfgJw9ISomMCpfbo1DIUwh/PM9BHIMnbDStMbIy6Mz+d8mcExaq/jvaJiMX5qE8bz1FvhWAnCW43NjhBAYHEwozLAHkukxvJJrOkz4AwfgJ+5fJ7xTXT4GdwaMo7q5FP0Y9IPxBHUJqK+73/K1E4Jvfey2/gfrZlIKM7UhWMsccMz3wYkH69uk4hkhDmLCSzTyx4csUpHPBWh1xxnBNFVs87DskQh7FwwTllxykIfFjJ740bHAIek+T/BMi74vZ9IEuV5/L+7WOzCv07iXLiEmAHEmpX/wpgwlnIJb5uiRIxHW/+AuVa4UB3N/yqZtHIWD0FWCXL2rq8twDo7bUBAyS/ITShw/b1lAIg/2j5+XoqvH1J7eEuouf2SXeMqjykQif18ARmAKwm2JBcMLrIrHMDTfBFUCqZx+3pAfJnM0pbJVwfclE+8EmO8m+rIZIpmkFDVxsUWbffvxcWyQyrczG5ZTwxUsDnA="
+  region: ap-southeast-1
+  app: twilreapi
+  env: twilreapi-cdr-processor
+  bucket_name: unicef-io-travis
+  on:
+    repo: dwilkie/twilreapi
+    branch: somleng.unicef.io
 after_success:
 - bundle exec codeclimate-test-reporter
