@@ -21,6 +21,7 @@ gem 'bitmask_attributes', :github => "numerex/bitmask_attributes"
 
 # Add your custom call routing logic
 gem 'twilreapi-active_call_router', :github => "dwilkie/twilreapi-active_call_router"
+gem 'twilreapi-active_call_router-unicef_io', :github => "dwilkie/twilreapi-active_call_router-unicef_io"
 
 # Add your custom billing logic
 gem 'twilreapi-active_biller', :github => "dwilkie/twilreapi-active_biller"
