@@ -31,7 +31,7 @@ deploy:
     secure: "DyM8ddqMj1pDqhQRu1IkG+AMhcyfK3oixu3GB5J//4h7Qj9KLYtuQ+W1tnGgKcfSzewepnJt5Y5oRlxvRCtpx8XSNzpzE+8B5lxNFydRMV/OA3rgL4atdsYPCvI+Kz5gAYkkkzIFkLuzDIicMwnsK0V1noHTcRxQCoLVuFaAqZYHdypw6T6sywSFRbIGbr9wHiqTZ5GwfJYfgJw9ISomMCpfbo1DIUwh/PM9BHIMnbDStMbIy6Mz+d8mcExaq/jvaJiMX5qE8bz1FvhWAnCW43NjhBAYHEwozLAHkukxvJJrOkz4AwfgJ+5fJ7xTXT4GdwaMo7q5FP0Y9IPxBHUJqK+73/K1E4Jvfey2/gfrZlIKM7UhWMsccMz3wYkH69uk4hkhDmLCSzTyx4csUpHPBWh1xxnBNFVs87DskQh7FwwTllxykIfFjJ740bHAIek+T/BMi74vZ9IEuV5/L+7WOzCv07iXLiEmAHEmpX/wpgwlnIJb5uiRIxHW/+AuVa4UB3N/yqZtHIWD0FWCXL2rq8twDo7bUBAyS/ITShw/b1lAIg/2j5+XoqvH1J7eEuouf2SXeMqjykQif18ARmAKwm2JBcMLrIrHMDTfBFUCqZx+3pAfJnM0pbJVwfclE+8EmO8m+rIZIpmkFDVxsUWbffvxcWyQyrczG5ZTwxUsDnA="
   region: ap-southeast-1
   app: twilreapi
-  env: twilreapi-worker
+  env: twilreapi-outbound-call-processor
   bucket_name: unicef-io-travis
   on:
     repo: dwilkie/twilreapi
