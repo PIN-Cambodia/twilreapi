@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
-  revision: 64416cb1471da249e1447174a56eb063d33a033f
+  revision: a75d14dc62aa051defb29bc63b0753b2cf4c7355
   specs:
     twilreapi-active_call_router-pin_cambodia (0.1.0)
       torasup (~> 0.1.1)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router.git
-  revision: 1b285a08fcc0710e8a0c6cf39bd6925327395f47
+  revision: 8088a962ca73d5a1a66350f91ae436ee7ae5ffa9
   specs:
     twilreapi-active_call_router (0.1.0)
 
@@ -155,7 +155,7 @@ GEM
       activesupport (>= 4.1.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (0.8.1)
+    i18n (0.8.4)
     i18n_data (0.7.0)
     jmespath (1.3.1)
     json (2.1.0)
@@ -183,7 +183,7 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pg (0.19.0)
-    phony (2.15.44)
+    phony (2.15.46)
     phony_rails (0.14.4)
       activesupport (>= 3.0)
       phony (~> 2.15)
@@ -254,7 +254,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    sixarm_ruby_unaccent (1.1.1)
+    sixarm_ruby_unaccent (1.1.2)
     slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
