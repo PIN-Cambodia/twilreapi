@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/dwilkie/twilreapi-active_biller-unicef_io.git
+  revision: 31ada9a49185e3e5b593d1a93af237c407096cfd
+  specs:
+    twilreapi-active_biller-unicef_io (0.1.0)
+      torasup (~> 0.1.1)
+      twilreapi-active_biller
+
+GIT
   remote: git://github.com/dwilkie/twilreapi-active_biller.git
   revision: b41ba9a7a9297de2a2d618f8f27eb0f539948213
   specs:
@@ -305,6 +313,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   twilreapi-active_biller!
+  twilreapi-active_biller-unicef_io!
   twilreapi-active_call_router!
   twilreapi-active_call_router-unicef_io!
   twilreapi-worker!

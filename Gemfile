@@ -25,6 +25,7 @@ gem 'twilreapi-active_call_router-unicef_io', :github => "dwilkie/twilreapi-acti
 
 # Add your custom billing logic
 gem 'twilreapi-active_biller', :github => "dwilkie/twilreapi-active_biller"
+gem 'twilreapi-active_biller-unicef_io', :github => "dwilkie/twilreapi-active_biller-unicef_io"
 
 # Use active_elastic_job as queue adapter and excute jobs in this application
 gem 'active_elastic_job', :github => "tawan/active-elastic-job"
