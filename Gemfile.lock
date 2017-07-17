@@ -1,23 +1,23 @@
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_biller-pin_cambodia.git
-  revision: d2005743efb08fb5298571fca3b99d96f359f51a
+  revision: d5e847e98343e89516ddd18378f8fc77c37e835b
   specs:
     twilreapi-active_biller-pin_cambodia (0.1.0)
-      torasup
+      torasup (~> 0.1.2)
       twilreapi-active_biller
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_biller.git
-  revision: b41ba9a7a9297de2a2d618f8f27eb0f539948213
+  revision: c6eb88e30657f7ac148de5b67082b99feaf8dfe1
   specs:
     twilreapi-active_biller (0.1.0)
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
-  revision: 2d82ae4164adef9edb1020a3bdcb11b85807d4fb
+  revision: fc8d4e427379f5439aca5fadf3bd252d9c12fbae
   specs:
     twilreapi-active_call_router-pin_cambodia (0.1.0)
-      torasup (~> 0.1.1)
+      torasup (~> 0.1.2)
       twilreapi-active_call_router
 
 GIT
@@ -183,7 +183,7 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pg (0.19.0)
-    phony (2.15.46)
+    phony (2.15.47)
     phony_rails (0.14.4)
       activesupport (>= 3.0)
       phony (~> 2.15)
@@ -270,10 +270,10 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.7)
-    torasup (0.1.1)
+    torasup (0.1.2)
       countries (>= 1.1.0)
       deep_merge
-      phony (>= 2.15.43)
+      phony (>= 2.15.47)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     unf (0.1.4)
