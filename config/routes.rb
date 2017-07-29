@@ -33,8 +33,10 @@ Rails.application.routes.draw do
     get "/2010-04-01/Accounts/:account_id/Usage/Records", :to => "usage/records#show", :as => :twilio_account_usage_records
 
     namespace :admin do
-      resources :phone_calls, :only => [:create, :show]
-      resources :call_data_records, :only => [:create, :show]
+      resources :phone_calls, :only => [:create, :show] do
+        resources :phone_call_events, :only => [:create, :show]
+      end
+      resources :call_data_records, :only => [:create]
     end
   end
 end

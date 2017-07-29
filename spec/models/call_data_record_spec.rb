@@ -29,6 +29,16 @@ describe CallDataRecord do
     it { is_expected.to monetize(:price) }
   end
 
+  describe "events" do
+    subject { create(factory) }
+
+    context "create" do
+      it("should broadcast") {
+        assert_broadcasted!(:call_data_record_created) { subject }
+      }
+    end
+  end
+
   describe "queries" do
     describe ".bill_minutes" do
       before do
@@ -130,6 +140,25 @@ describe CallDataRecord do
       end
 
       it { expect(described_class.inbound).to match_array([inbound_cdr]) }
+    end
+  end
+
+  describe "#completed_event" do
+    subject { build(factory, event_trait) }
+
+    describe "#busy?" do
+      let(:event_trait) { :event_busy }
+      it { is_expected.to be_busy }
+    end
+
+    describe "#answered?" do
+      let(:event_trait) { :event_answered }
+      it { is_expected.to be_answered }
+    end
+
+    describe "#not_answered?" do
+      let(:event_trait) { :event_not_answered }
+      it { is_expected.to be_not_answered }
     end
   end
 
