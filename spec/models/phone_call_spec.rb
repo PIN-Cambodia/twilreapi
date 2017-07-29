@@ -12,6 +12,7 @@ describe PhoneCall do
   describe "associations" do
     it { is_expected.to belong_to(:incoming_phone_number) }
     it { is_expected.to have_one(:call_data_record) }
+    it { is_expected.to have_many(:phone_call_events) }
   end
 
   describe "validations" do
@@ -37,6 +38,123 @@ describe PhoneCall do
     end
   end
 
+  describe "state_machine" do
+    def subject_traits
+      {current_status_trait => nil}
+    end
+
+    def subject_attributes
+      {}
+    end
+
+    subject { create(factory, *subject_traits.keys, subject_attributes) }
+
+    context "state is 'queued'" do
+      let(:current_status_trait) { :queued }
+
+      context "external_id is not present" do
+        def assert_transitions!
+          is_expected.to transition_from(:queued).to(:canceled).on_event(:cancel)
+        end
+
+        it { assert_transitions! }
+      end
+
+      context "external_id is present" do
+        def subject_traits
+          super.merge(:with_external_id => nil)
+        end
+
+        def assert_transitions!
+          is_expected.to transition_from(:queued).to(:initiated).on_event(:initiate)
+        end
+
+        it { assert_transitions! }
+      end
+    end
+
+    context "state is 'initiated'" do
+      let(:current_status_trait) { :initiated }
+
+      def assert_transitions!
+        is_expected.to transition_from(:initiated).to(:ringing).on_event(:ring)
+        is_expected.to transition_from(:initiated).to(:answered).on_event(:answer)
+      end
+
+      it { assert_transitions! }
+    end
+
+    context "state is 'ringing'" do
+      let(:current_status_trait) { :ringing }
+
+      def assert_transitions!
+        is_expected.to transition_from(:ringing).to(:answered).on_event(:answer)
+      end
+
+      it { assert_transitions! }
+    end
+
+    context "state is 'answered'" do
+      let(:current_status_trait) { :answered }
+
+      def assert_transitions!
+        is_expected.to transition_from(:answered).to(:completed).on_event(:complete)
+      end
+
+      it { assert_transitions! }
+    end
+
+    describe "#complete" do
+      let(:event) { :complete }
+
+      def assert_transitions!
+        is_expected.to transition_from(subject.status).to(asserted_next_status).on_event(event)
+      end
+
+      context "with completed_event" do
+        let(:phone_call_event) { build(:phone_call_event_completed, *phone_call_event_traits.keys) }
+
+        def phone_call_event_traits
+          {
+            phone_call_event_trait => nil
+          }
+        end
+
+        def subject_attributes
+          super.merge(:completed_event => phone_call_event)
+        end
+
+        # phone_call_event_trait => asserted status
+        asserted_state_transitions = {
+          :not_answered => :not_answered,
+          :busy => :busy,
+          :answered => :completed,
+          :failed => :failed
+        }
+
+        [:initiated, :ringing].each do |current_status_trait|
+          asserted_state_transitions.each do |phone_call_event_trait, asserted_next_status|
+            context "self.status => '#{current_status_trait}', self.event_#{phone_call_event_trait}? => true" do
+              let(:phone_call_event_trait) { phone_call_event_trait }
+              let(:current_status_trait) { current_status_trait }
+              let(:asserted_next_status) { asserted_next_status }
+
+              it { assert_transitions! }
+            end
+          end
+        end
+      end
+
+      [:not_answered, :busy, :failed, :completed].each do |current_status_trait|
+        context "self.status => '#{current_status_trait}'" do
+          let(:current_status_trait) { current_status_trait }
+          let(:asserted_next_status) { subject.status }
+          it { assert_transitions! }
+        end
+      end
+    end
+  end
+
   describe "json" do
     let(:json) { JSON.parse(subject.public_send(json_method)) }
 
@@ -53,18 +171,61 @@ describe PhoneCall do
       end
 
       it { assert_valid_json! }
+
+      context "status" do
+        subject { create(factory, :not_answered) }
+
+        def assert_valid_json!
+          expect(json["status"]).to eq(subject.twilio_status)
+        end
+
+        it { assert_valid_json! }
+      end
     end
 
     describe "#to_internal_outbound_call_json" do
       subject { create(factory, :with_optional_attributes) }
       let(:json_method) { :to_internal_outbound_call_json }
-      it { expect(json.keys).to match_array(["sid", "account_sid", "account_auth_token", "voice_url", "voice_method", "status_callback_url", "status_callback_method", "from", "to", "routing_instructions"]) }
+
+      def assert_valid_json!
+        expect(json.keys).to match_array(["sid", "account_sid", "account_auth_token", "voice_url", "voice_method", "status_callback_url", "status_callback_method", "from", "to", "routing_instructions"])
+      end
+
+      it { assert_valid_json! }
     end
 
     describe "#to_internal_inbound_call_json" do
       subject { create(factory, :inbound) }
       let(:json_method) { :to_internal_inbound_call_json }
-      it { expect(json.keys).to match_array(["sid", "account_sid", "account_auth_token", "voice_url", "voice_method", "status_callback_url", "status_callback_method", "from", "to", "twilio_request_to"]) }
+
+      def assert_valid_json!
+        expect(json.keys).to match_array(["sid", "account_sid", "account_auth_token", "voice_url", "voice_method", "status_callback_url", "status_callback_method", "from", "to", "twilio_request_to"])
+      end
+
+      it { assert_valid_json! }
+    end
+  end
+
+  describe "#twilio_status" do
+    asserted_twilio_call_status_mappings = {
+      :queued => "queued",
+      :initiated => "queued",
+      :ringing => "ringing",
+      :answered => "in-progress",
+      :busy => "busy",
+      :failed => "failed",
+      :not_answered => "no-answer",
+      :completed => "completed",
+      :canceled => "canceled"
+    }
+
+    let(:result) { subject.twilio_status }
+
+    asserted_twilio_call_status_mappings.each do |phone_call_trait, asserted_twilio_status|
+      context "self.status => '#{phone_call_trait}'" do
+        subject { build(factory, phone_call_trait) }
+        it { expect(result).to eq(asserted_twilio_status) }
+      end
     end
   end
 

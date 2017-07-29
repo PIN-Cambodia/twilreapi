@@ -5,6 +5,8 @@ class CallDataRecord < ApplicationRecord
 
   DIRECTIONS = [INBOUND_DIRECTION, OUTBOUND_DIRECTION]
 
+  include Wisper::Publisher
+
   attachment :file, :content_type => ["application/json"]
 
   belongs_to :phone_call
@@ -24,6 +26,12 @@ class CallDataRecord < ApplicationRecord
            :numericality => {
              :greater_than_or_equal_to => 0,
            }
+
+  after_commit   :publish_created, :on => :create
+
+  attr_accessor :event
+
+  delegate :answered?, :not_answered?, :busy?, :to => :completed_event
 
   def enqueue_process!(cdr)
     job_adapter.perform_later(cdr)
@@ -134,7 +142,18 @@ class CallDataRecord < ApplicationRecord
     Query.new
   end
 
+  def completed_event
+    @completed_event ||= build_completed_event
+  end
+
   private
+
+  def build_completed_event
+    completed_event = PhoneCallEvent::Completed.new
+    completed_event.sip_term_status = sip_term_status
+    completed_event.answer_time = answer_time
+    completed_event
+  end
 
   def calculate_price
     active_biller.options = {:call_data_record => self}
@@ -152,5 +171,9 @@ class CallDataRecord < ApplicationRecord
 
   def job_adapter
     @job_adapter ||= JobAdapter.new(:call_data_record_worker)
+  end
+
+  def publish_created
+    broadcast(:call_data_record_created, self)
   end
 end
