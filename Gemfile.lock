@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/dwilkie/twilreapi-active_biller-unicef_io.git
+  remote: https://github.com/dwilkie/twilreapi-active_biller-unicef_io.git
   revision: bdcdd543456deb09108bda006dbec1020e6fffaf
   specs:
     twilreapi-active_biller-unicef_io (0.1.0)
@@ -7,13 +7,13 @@ GIT
       twilreapi-active_biller
 
 GIT
-  remote: git://github.com/dwilkie/twilreapi-active_biller.git
+  remote: https://github.com/dwilkie/twilreapi-active_biller.git
   revision: c6eb88e30657f7ac148de5b67082b99feaf8dfe1
   specs:
     twilreapi-active_biller (0.1.0)
 
 GIT
-  remote: git://github.com/dwilkie/twilreapi-active_call_router-unicef_io.git
+  remote: https://github.com/dwilkie/twilreapi-active_call_router-unicef_io.git
   revision: 8eb7e4ab99dd00f21c9695e050fc8fbc5b835a36
   specs:
     twilreapi-active_call_router-unicef_io (0.1.0)
@@ -21,32 +21,32 @@ GIT
       twilreapi-active_call_router
 
 GIT
-  remote: git://github.com/dwilkie/twilreapi-active_call_router.git
+  remote: https://github.com/dwilkie/twilreapi-active_call_router.git
   revision: 8088a962ca73d5a1a66350f91ae436ee7ae5ffa9
   specs:
     twilreapi-active_call_router (0.1.0)
 
 GIT
-  remote: git://github.com/dwilkie/twilreapi-worker.git
+  remote: https://github.com/dwilkie/twilreapi-worker.git
   revision: 3d88d2719d5b3768c0e99079cba3be4c46deb3d1
   specs:
     twilreapi-worker (0.1.0)
 
 GIT
-  remote: git://github.com/krisleech/wisper.git
+  remote: https://github.com/krisleech/wisper.git
   revision: 7e605f5731dad38a40828c1cf57937d35be8a984
   specs:
     wisper (2.0.0)
 
 GIT
-  remote: git://github.com/numerex/bitmask_attributes.git
+  remote: https://github.com/numerex/bitmask_attributes.git
   revision: 0bb0d9993aa6cb3114daa0c118c2bc70a032847c
   specs:
     bitmask_attributes (1.0.0)
       activerecord (>= 3.1)
 
 GIT
-  remote: git://github.com/refile/refile-s3.git
+  remote: https://github.com/refile/refile-s3.git
   revision: 78a74b60a597dd1174b0599be919689d41d5f118
   specs:
     refile-s3 (0.2.0)
@@ -54,8 +54,8 @@ GIT
       refile (~> 0.6.0)
 
 GIT
-  remote: git://github.com/refile/refile.git
-  revision: d7a42dcd7cf631ba94b01231f535bda061f6af92
+  remote: https://github.com/refile/refile.git
+  revision: 4e82923a551b3acce1190562cb2037dd7df9577b
   specs:
     refile (0.6.2)
       mime-types
@@ -63,20 +63,20 @@ GIT
       sinatra (>= 1.4.5)
 
 GIT
-  remote: git://github.com/sinatra/sinatra.git
-  revision: 6835f4e21cf0f6c1e9a18a5106363b679a9d7e22
+  remote: https://github.com/sinatra/sinatra.git
+  revision: b8935900461766894c70f4c768a514bb868f391b
   specs:
-    rack-protection (2.0.0.beta2)
+    rack-protection (2.0.0)
       rack
-    sinatra (2.0.0.beta2)
-      mustermann (= 1.0.0.beta2)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.0.beta2)
+      rack-protection (= 2.0.0)
       tilt (~> 2.0)
 
 GIT
-  remote: git://github.com/tawan/active-elastic-job.git
-  revision: 7023166936c2e34e35f35d6b2fdbc60f07632fdd
+  remote: https://github.com/tawan/active-elastic-job.git
+  revision: 9c748eae1077a90a0f803a02cc7b08d4f12bd3d3
   specs:
     active_elastic_job (2.0.0)
       aws-sdk (~> 2)
@@ -85,137 +85,137 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (4.11.1)
-    actioncable (5.0.0.1)
-      actionpack (= 5.0.0.1)
-      nio4r (~> 1.2)
+    aasm (4.12.1)
+      concurrent-ruby (~> 1.0)
+    actioncable (5.1.2)
+      actionpack (= 5.1.2)
+      nio4r (~> 2.0)
       websocket-driver (~> 0.6.1)
-    actionmailer (5.0.0.1)
-      actionpack (= 5.0.0.1)
-      actionview (= 5.0.0.1)
-      activejob (= 5.0.0.1)
+    actionmailer (5.1.2)
+      actionpack (= 5.1.2)
+      actionview (= 5.1.2)
+      activejob (= 5.1.2)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.0.0.1)
-      actionview (= 5.0.0.1)
-      activesupport (= 5.0.0.1)
+    actionpack (5.1.2)
+      actionview (= 5.1.2)
+      activesupport (= 5.1.2)
       rack (~> 2.0)
       rack-test (~> 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.0.0.1)
-      activesupport (= 5.0.0.1)
+    actionview (5.1.2)
+      activesupport (= 5.1.2)
       builder (~> 3.1)
-      erubis (~> 2.7.0)
+      erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    activejob (5.0.0.1)
-      activesupport (= 5.0.0.1)
+      rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    activejob (5.1.2)
+      activesupport (= 5.1.2)
       globalid (>= 0.3.6)
-    activemodel (5.0.0.1)
-      activesupport (= 5.0.0.1)
-    activerecord (5.0.0.1)
-      activemodel (= 5.0.0.1)
-      activesupport (= 5.0.0.1)
-      arel (~> 7.0)
-    activesupport (5.0.0.1)
+    activemodel (5.1.2)
+      activesupport (= 5.1.2)
+    activerecord (5.1.2)
+      activemodel (= 5.1.2)
+      activesupport (= 5.1.2)
+      arel (~> 8.0)
+    activesupport (5.1.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    arel (7.1.4)
-    aws-sdk (2.7.3)
-      aws-sdk-resources (= 2.7.3)
-    aws-sdk-core (2.7.3)
+    arel (8.0.0)
+    aws-sdk (2.10.19)
+      aws-sdk-resources (= 2.10.19)
+    aws-sdk-core (2.10.19)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.7.3)
-      aws-sdk-core (= 2.7.3)
-    aws-sigv4 (1.0.0)
+    aws-sdk-resources (2.10.19)
+      aws-sdk-core (= 2.10.19)
+    aws-sigv4 (1.0.1)
     builder (3.2.3)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
     coderay (1.1.1)
-    concurrent-ruby (1.0.4)
-    countries (2.0.8)
-      i18n_data (~> 0.7.0)
-      money (~> 6.7)
+    concurrent-ruby (1.0.5)
+    countries (2.1.1)
+      i18n_data (~> 0.8.0)
+      money (~> 6.9)
       sixarm_ruby_unaccent (~> 1.1)
       unicode_utils (~> 1.4)
     deep_merge (1.1.1)
     diff-lcs (1.3)
     docile (1.1.5)
-    domain_name (0.5.20161129)
+    domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
-    doorkeeper (4.2.0)
+    doorkeeper (4.2.6)
       railties (>= 4.2)
-    erubis (2.7.0)
+    erubi (1.6.1)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    foreman (0.83.0)
+    foreman (0.84.0)
       thor (~> 0.19.1)
-    globalid (0.3.7)
-      activesupport (>= 4.1.0)
+    globalid (0.4.0)
+      activesupport (>= 4.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.6)
-    i18n_data (0.7.0)
+    i18n_data (0.8.0)
     jmespath (1.3.1)
     json (2.1.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.4)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (2.99.3)
-    mini_portile2 (2.1.0)
-    minitest (5.10.1)
-    monetize (1.6.0)
-      money (~> 6.8)
-    money (6.8.4)
+    mini_portile2 (2.2.0)
+    minitest (5.10.3)
+    monetize (1.7.0)
+      money (~> 6.9)
+    money (6.9.0)
       i18n (>= 0.6.4, < 0.9)
-      sixarm_ruby_unaccent (>= 1.1.1, < 2)
-    money-rails (1.8.0)
+    money-rails (1.9.0)
       activesupport (>= 3.0)
-      monetize (~> 1.6.0)
-      money (~> 6.8.1)
+      monetize (~> 1.7.0)
+      money (~> 6.9.0)
       railties (>= 3.0)
-    mustermann (1.0.0.beta2)
+    mustermann (1.0.0)
     netrc (0.11.0)
-    nio4r (1.2.1)
-    nokogiri (1.7.0.1)
-      mini_portile2 (~> 2.1.0)
-    pg (0.19.0)
+    nio4r (2.1.0)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
+    pg (0.21.0)
     phony (2.15.47)
-    phony_rails (0.14.4)
+    phony_rails (0.14.6)
       activesupport (>= 3.0)
-      phony (~> 2.15)
+      phony (> 2.15)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puma (3.7.0)
-    rack (2.0.1)
+    puma (3.9.1)
+    rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rails (5.0.0.1)
-      actioncable (= 5.0.0.1)
-      actionmailer (= 5.0.0.1)
-      actionpack (= 5.0.0.1)
-      actionview (= 5.0.0.1)
-      activejob (= 5.0.0.1)
-      activemodel (= 5.0.0.1)
-      activerecord (= 5.0.0.1)
-      activesupport (= 5.0.0.1)
+    rails (5.1.2)
+      actioncable (= 5.1.2)
+      actionmailer (= 5.1.2)
+      actionpack (= 5.1.2)
+      actionview (= 5.1.2)
+      activejob (= 5.1.2)
+      activemodel (= 5.1.2)
+      activerecord (= 5.1.2)
+      activesupport (= 5.1.2)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 5.0.0.1)
+      railties (= 5.1.2)
       sprockets-rails (>= 2.0.0)
-    rails-dom-testing (2.0.2)
-      activesupport (>= 4.2.0, < 6.0)
-      nokogiri (~> 1.6)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails_12factor (0.0.3)
@@ -223,46 +223,47 @@ GEM
       rails_stdout_logging
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
-    railties (5.0.0.1)
-      actionpack (= 5.0.0.1)
-      activesupport (= 5.0.0.1)
+    railties (5.1.2)
+      actionpack (= 5.1.2)
+      activesupport (= 5.1.2)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
-    responders (2.3.0)
-      railties (>= 4.2.0, < 5.1)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rspec-core (3.5.4)
-      rspec-support (~> 3.5.0)
-    rspec-expectations (3.5.0)
+    rspec-core (3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-expectations (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-mocks (3.5.0)
+      rspec-support (~> 3.6.0)
+    rspec-mocks (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-rails (3.5.2)
+      rspec-support (~> 3.6.0)
+    rspec-rails (3.6.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 3.5.0)
-      rspec-expectations (~> 3.5.0)
-      rspec-mocks (~> 3.5.0)
-      rspec-support (~> 3.5.0)
-    rspec-support (3.5.0)
-    shoulda-matchers (3.1.1)
+      rspec-core (~> 3.6.0)
+      rspec-expectations (~> 3.6.0)
+      rspec-mocks (~> 3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-support (3.6.0)
+    shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
     simplecov (0.13.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.0)
+    simplecov-html (0.10.1)
     sixarm_ruby_unaccent (1.1.2)
     slop (3.6.0)
-    spring (2.0.1)
+    spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -274,17 +275,17 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     thor (0.19.4)
-    thread_safe (0.3.5)
-    tilt (2.0.6)
+    thread_safe (0.3.6)
+    tilt (2.0.8)
     torasup (0.1.2)
       countries (>= 1.1.0)
       deep_merge
       phony (>= 2.15.47)
-    tzinfo (1.2.2)
+    tzinfo (1.2.3)
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.2)
+    unf_ext (0.0.7.4)
     unicode_utils (1.4.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -308,7 +309,7 @@ DEPENDENCIES
   phony_rails
   pry
   puma
-  rails (= 5.0.0.1)
+  rails (= 5.1.2)
   rails_12factor
   refile!
   refile-s3!
@@ -328,4 +329,4 @@ DEPENDENCIES
   wisper-rspec
 
 BUNDLED WITH
-   1.13.7
+   1.15.3
