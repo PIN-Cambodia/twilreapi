@@ -222,6 +222,14 @@ FactoryGirl.define do
       status "busy"
     end
 
+    trait :can_complete do
+      answered
+    end
+
+    trait :already_completed do
+      failed
+    end
+
     trait :with_optional_attributes do
       from_account_with_access_token
       with_normalized_voice_method
@@ -229,8 +237,8 @@ FactoryGirl.define do
       with_status_callback_method
     end
 
-    trait :inbound do
-      inbound true
+    trait :initiating_inbound_call do
+      initiating_inbound_call true
       incoming_phone_number
       to { incoming_phone_number.phone_number }
       with_external_id

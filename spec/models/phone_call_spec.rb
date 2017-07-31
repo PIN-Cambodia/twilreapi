@@ -24,6 +24,8 @@ describe PhoneCall do
       context "#external_id" do
         it { is_expected.to validate_uniqueness_of(:external_id).allow_nil.strict }
       end
+
+      it { is_expected.to allow_value("855970001294").for(:to) }
     end
 
     context "for outbound calls" do
@@ -31,7 +33,7 @@ describe PhoneCall do
     end
 
     context "for inbound calls" do
-      subject { build(factory, :inbound) }
+      subject { build(factory, :initiating_inbound_call) }
       it { is_expected.to allow_value("855970001294").for(:to) }
       it { is_expected.to validate_presence_of(:external_id) }
       it { is_expected.to validate_presence_of(:incoming_phone_number) }
@@ -107,6 +109,20 @@ describe PhoneCall do
     describe "#complete" do
       let(:event) { :complete }
 
+      context "can complete" do
+        subject { create(factory, :can_complete) }
+        it("should broadcast") {
+          assert_broadcasted!(:phone_call_completed) { subject.complete! }
+        }
+      end
+
+      context "already completed" do
+        subject { create(factory, :already_completed) }
+        it("should not broadcast") {
+          assert_not_broadcasted!(:phone_call_completed) { subject.complete! }
+        }
+      end
+
       def assert_transitions!
         is_expected.to transition_from(subject.status).to(asserted_next_status).on_event(event)
       end
@@ -149,6 +165,11 @@ describe PhoneCall do
         context "self.status => '#{current_status_trait}'" do
           let(:current_status_trait) { current_status_trait }
           let(:asserted_next_status) { subject.status }
+
+          def assert_transitions!
+            is_expected.not_to transition_from(current_status_trait).to(asserted_next_status).on_event(event)
+          end
+
           it { assert_transitions! }
         end
       end
@@ -195,7 +216,7 @@ describe PhoneCall do
     end
 
     describe "#to_internal_inbound_call_json" do
-      subject { create(factory, :inbound) }
+      subject { create(factory, :initiating_inbound_call) }
       let(:json_method) { :to_internal_inbound_call_json }
 
       def assert_valid_json!
@@ -388,7 +409,7 @@ describe PhoneCall do
 
     context "without cdr" do
       context "for inbound calls" do
-        subject { create(factory, :inbound) }
+        subject { create(factory, :initiating_inbound_call) }
         it { assert_inbound! }
       end
 
@@ -455,7 +476,7 @@ describe PhoneCall do
 
   describe "#phone_number_sid" do
     context "for inbound calls" do
-      subject { create(factory, :inbound) }
+      subject { create(factory, :initiating_inbound_call) }
       it { expect(subject.phone_number_sid).to eq(subject.incoming_phone_number_sid) }
     end
 

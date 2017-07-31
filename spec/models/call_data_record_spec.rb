@@ -24,6 +24,15 @@ describe CallDataRecord do
     it { is_expected.to validate_presence_of(:end_time) }
   end
 
+  describe "events" do
+    subject { create(factory) }
+    context "create" do
+      it("should broadcast") {
+        assert_broadcasted!(:call_data_record_created) { subject }
+      }
+    end
+  end
+
   describe "price" do
     it { is_expected.to monetize(:price) }
   end
@@ -110,18 +119,18 @@ describe CallDataRecord do
     end
 
     describe ".outbound" do
-      let(:outbound_cdr) { create(:call_data_record, :outbound) }
+      let(:outbound_cdr) { create(factory, :outbound) }
 
       before do
         outbound_cdr
-        create(:call_data_record, :inbound)
+        create(factory, :inbound)
       end
 
       it { expect(described_class.outbound).to match_array([outbound_cdr]) }
     end
 
     describe ".inbound" do
-      let(:inbound_cdr) { create(:call_data_record, :inbound) }
+      let(:inbound_cdr) { create(factory, :inbound) }
 
       before do
         inbound_cdr

@@ -1,6 +1,8 @@
 require "twilreapi/worker/job/outbound_call_job"
 
 class PhoneCall < ApplicationRecord
+  include Wisper::Publisher
+
   TWILIO_CALL_DIRECTIONS = {
     "inbound" => "inbound",
     "outbound" => "outbound-api"
@@ -28,12 +30,15 @@ class PhoneCall < ApplicationRecord
   before_validation :normalize_phone_numbers
 
   validates :from, :status, :presence => true
-  validates :to,
-            :presence => true, :phony_plausible => { :unless => :inbound? }
-  validates :external_id, :uniqueness => true, :strict => true, :allow_nil => true
-  validates :external_id, :incoming_phone_number, :presence => true, :if => :inbound?
 
-  attr_accessor :inbound, :twilio_request_to, :completed_event
+  validates :to,
+            :presence => true,
+            :phony_plausible => { :unless => :initiating_inbound_call?, :on => :create }
+
+  validates :external_id, :uniqueness => true, :strict => true, :allow_nil => true
+  validates :external_id, :incoming_phone_number, :presence => true, :if => :initiating_inbound_call?
+
+  attr_accessor :initiating_inbound_call, :twilio_request_to, :completed_event
 
   alias_attribute :"To", :to
   alias_attribute :"From", :from
@@ -66,7 +71,7 @@ class PhoneCall < ApplicationRecord
 
   include AASM
 
-  aasm :column => :status do
+  aasm :column => :status, :whiny_transitions => false do
     state :queued, :initial => true
     state :initiated
     state :ringing
@@ -93,7 +98,7 @@ class PhoneCall < ApplicationRecord
       transitions :from => [:initiated, :ringing], :to => :answered
     end
 
-    event :complete do
+    event :complete, :after_commit => :publish_completed do
       transitions :from => :answered,
                   :to => :completed
 
@@ -111,18 +116,6 @@ class PhoneCall < ApplicationRecord
 
       transitions :from => [:initiated, :ringing],
                   :to => :failed
-
-      transitions :from => :not_answered,
-                  :to => :not_answered
-
-      transitions :from => :busy,
-                  :to => :busy
-
-      transitions :from => :failed,
-                  :to => :failed
-
-      transitions :from => :completed,
-                  :to => :completed
     end
   end
 
@@ -191,7 +184,7 @@ class PhoneCall < ApplicationRecord
   end
 
   def initiate_inbound_call
-    self.inbound = true
+    self.initiating_inbound_call = true
     normalize_phone_numbers
     if self.incoming_phone_number = IncomingPhoneNumber.find_by_phone_number(to)
       self.account = incoming_phone_number_account
@@ -267,6 +260,10 @@ class PhoneCall < ApplicationRecord
 
   private
 
+  def publish_completed
+    broadcast(:phone_call_completed, self)
+  end
+
   def has_external_id?
     external_id?
   end
@@ -283,8 +280,8 @@ class PhoneCall < ApplicationRecord
     completed_event_busy? || call_data_record_busy?
   end
 
-  def inbound?
-    !!inbound
+  def initiating_inbound_call?
+    !!initiating_inbound_call
   end
 
   def normalize_phone_numbers
