@@ -28,12 +28,15 @@ class PhoneCall < ApplicationRecord
   before_validation :normalize_phone_numbers
 
   validates :from, :status, :presence => true
-  validates :to,
-            :presence => true, :phony_plausible => { :unless => :inbound? }
-  validates :external_id, :uniqueness => true, :strict => true, :allow_nil => true
-  validates :external_id, :incoming_phone_number, :presence => true, :if => :inbound?
 
-  attr_accessor :inbound, :twilio_request_to, :completed_event
+  validates :to,
+            :presence => true,
+            :phony_plausible => { :unless => :initiating_inbound_call?, :on => :create }
+
+  validates :external_id, :uniqueness => true, :strict => true, :allow_nil => true
+  validates :external_id, :incoming_phone_number, :presence => true, :if => :initiating_inbound_call?
+
+  attr_accessor :initiating_inbound_call, :twilio_request_to, :completed_event
 
   alias_attribute :"To", :to
   alias_attribute :"From", :from
@@ -191,7 +194,7 @@ class PhoneCall < ApplicationRecord
   end
 
   def initiate_inbound_call
-    self.inbound = true
+    self.initiating_inbound_call = true
     normalize_phone_numbers
     if self.incoming_phone_number = IncomingPhoneNumber.find_by_phone_number(to)
       self.account = incoming_phone_number_account
@@ -283,8 +286,8 @@ class PhoneCall < ApplicationRecord
     completed_event_busy? || call_data_record_busy?
   end
 
-  def inbound?
-    !!inbound
+  def initiating_inbound_call?
+    !!initiating_inbound_call
   end
 
   def normalize_phone_numbers

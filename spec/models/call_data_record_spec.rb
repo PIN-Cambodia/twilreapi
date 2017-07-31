@@ -110,18 +110,18 @@ describe CallDataRecord do
     end
 
     describe ".outbound" do
-      let(:outbound_cdr) { create(:call_data_record, :outbound) }
+      let(:outbound_cdr) { create(factory, :outbound) }
 
       before do
         outbound_cdr
-        create(:call_data_record, :inbound)
+        create(factory, :inbound)
       end
 
       it { expect(described_class.outbound).to match_array([outbound_cdr]) }
     end
 
     describe ".inbound" do
-      let(:inbound_cdr) { create(:call_data_record, :inbound) }
+      let(:inbound_cdr) { create(factory, :inbound) }
 
       before do
         inbound_cdr
