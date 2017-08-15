@@ -321,7 +321,9 @@ class PhoneCall < ApplicationRecord
     {
       :sid => nil,
       :account_sid => nil,
-      :account_auth_token => nil
+      :account_auth_token => nil,
+      :direction => nil,
+      :api_version => nil
     }
   end
 
@@ -329,8 +331,6 @@ class PhoneCall < ApplicationRecord
     {
       :voice_url => nil,
       :voice_method => nil,
-      :status_callback_url => nil,
-      :status_callback_method => nil,
       :to => nil,
       :from => nil
     }

@@ -209,7 +209,7 @@ describe PhoneCall do
       let(:json_method) { :to_internal_outbound_call_json }
 
       def assert_valid_json!
-        expect(json.keys).to match_array(["sid", "account_sid", "account_auth_token", "voice_url", "voice_method", "status_callback_url", "status_callback_method", "from", "to", "routing_instructions"])
+        expect(json.keys).to match_array(["sid", "account_sid", "account_auth_token", "voice_url", "voice_method", "from", "to", "routing_instructions", "api_version", "direction"])
       end
 
       it { assert_valid_json! }
@@ -220,7 +220,7 @@ describe PhoneCall do
       let(:json_method) { :to_internal_inbound_call_json }
 
       def assert_valid_json!
-        expect(json.keys).to match_array(["sid", "account_sid", "account_auth_token", "voice_url", "voice_method", "status_callback_url", "status_callback_method", "from", "to", "twilio_request_to"])
+        expect(json.keys).to match_array(["sid", "account_sid", "account_auth_token", "voice_url", "voice_method", "from", "to", "twilio_request_to", "api_version", "direction"])
       end
 
       it { assert_valid_json! }
@@ -350,8 +350,6 @@ describe PhoneCall do
   end
 
   describe "#enqueue_outbound_call!" do
-    include ActiveJob::TestHelper
-
     subject { create(factory) }
     let(:enqueued_job) { enqueued_jobs.first }
 
