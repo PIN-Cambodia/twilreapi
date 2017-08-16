@@ -35,7 +35,11 @@ class Api::Admin::PhoneCallEventsController < Api::Admin::BaseController
   end
 
   def phone_call
-    PhoneCall.find(params[:phone_call_id])
+    @phone_call ||= by_uuid(:id).or(by_uuid(:external_id)).first!
+  end
+
+  def by_uuid(field)
+    PhoneCall.where(field => params[:phone_call_id])
   end
 
   def respond_with_options
@@ -46,7 +50,7 @@ class Api::Admin::PhoneCallEventsController < Api::Admin::BaseController
 
   def subscribe_listeners
     (event_type_settings["listeners"] || []).each do |event_type_listener|
-      Wisper.subscribe(event_type_listener.new)
+      resource.subscribe(event_type_listener.new)
     end
   end
 
