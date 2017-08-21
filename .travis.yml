@@ -23,7 +23,7 @@ deploy:
     env: twilreapi-web
     bucket_name: unicef-io-travis
     on:
-      repo: dwilkie/twilreapi
+      repo: somleng/twilreapi
       branch: somleng.unicef.io
   - provider: elasticbeanstalk
     edge: true
@@ -36,7 +36,7 @@ deploy:
     env: twilreapi-outbound-call-processor
     bucket_name: unicef-io-travis
     on:
-      repo: dwilkie/twilreapi
+      repo: somleng/twilreapi
       branch: somleng.unicef.io
   - provider: elasticbeanstalk
     edge: true
@@ -49,7 +49,7 @@ deploy:
     env: twilreapi-cdr-processor
     bucket_name: unicef-io-travis
     on:
-      repo: dwilkie/twilreapi
+      repo: somleng/twilreapi
       branch: somleng.unicef.io
 after_success:
   - bundle exec codeclimate-test-reporter
