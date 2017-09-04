@@ -23,9 +23,13 @@ class PhoneCall < ApplicationRecord
   include TwilioApiResource
   include TwilioUrlLogic
 
+  belongs_to :account
   belongs_to :incoming_phone_number, :optional => true
+  belongs_to :recording, :optional => true
+
   has_one    :call_data_record
   has_many   :phone_call_events, :class_name => "PhoneCallEvent::Base"
+  has_many   :recordings
 
   before_validation :normalize_phone_numbers
 
@@ -68,6 +72,8 @@ class PhoneCall < ApplicationRecord
            :to => :completed_event,
            :prefix => true,
            :allow_nil => true
+
+  delegate :sid, :to => :account, :prefix => true
 
   include AASM
 
@@ -247,7 +253,9 @@ class PhoneCall < ApplicationRecord
   end
 
   def subresource_uris
-    {}
+    uris = {}
+    uris.merge!("recordings" => Rails.application.routes.url_helpers.api_twilio_account_call_recordings_path(account_id, id)) if recordings.any?
+    uris
   end
 
   def to_formatted

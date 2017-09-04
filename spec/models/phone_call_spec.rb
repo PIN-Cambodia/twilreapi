@@ -10,9 +10,12 @@ describe PhoneCall do
   end
 
   describe "associations" do
+    it { is_expected.to belong_to(:account) }
     it { is_expected.to belong_to(:incoming_phone_number) }
+    it { is_expected.to belong_to(:recording) }
     it { is_expected.to have_one(:call_data_record) }
     it { is_expected.to have_many(:phone_call_events) }
+    it { is_expected.to have_many(:recordings) }
   end
 
   describe "validations" do
@@ -522,7 +525,35 @@ describe PhoneCall do
   end
 
   describe "#subresource_uris" do
-    it { expect(subject.subresource_uris).to eq({}) }
+    # From: https://www.twilio.com/docs/api/rest/response#hypermedia-in-instance-resources
+
+    subject { create(factory) }
+    let(:result) { subject.subresource_uris }
+
+    def setup_scenario
+    end
+
+    before do
+      setup_scenario
+    end
+
+    context "given the phone call has recordings" do
+      let(:recording) { create(:recording, :phone_call => subject) }
+
+      def setup_scenario
+        recording
+      end
+
+      def assert_result!
+        expect(result).to include("recordings" => Rails.application.routes.url_helpers.api_twilio_account_call_recordings_path(subject.account_id, subject.id))
+      end
+
+      it { assert_result! }
+    end
+
+    context "given the phone call has no recordings" do
+      it { expect(result).to eq({}) }
+    end
   end
 
   describe "#to_formatted" do
