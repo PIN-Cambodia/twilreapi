@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
-  revision: 98ec2e95f84ccdfdd0890c67b4abdef0636ab75f
+  revision: aa789eecbd398b04faef4299f653c014ec5e3893
   specs:
     twilreapi-active_call_router-pin_cambodia (0.1.0)
       torasup (~> 0.1.2)
@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router.git
-  revision: 8088a962ca73d5a1a66350f91ae436ee7ae5ffa9
+  revision: ae650b5640d8c8304935217c8cac158951329992
   specs:
     twilreapi-active_call_router (0.1.0)
 
@@ -212,7 +212,7 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     pg (0.21.0)
-    phony (2.15.47)
+    phony (2.15.48)
     phony_rails (0.14.6)
       activesupport (>= 3.0)
       phony (> 2.15)
@@ -361,4 +361,4 @@ DEPENDENCIES
   wisper-rspec
 
 BUNDLED WITH
-   1.15.3
+   1.16.0.pre.2
