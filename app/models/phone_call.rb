@@ -42,11 +42,12 @@ class PhoneCall < ApplicationRecord
   validates :external_id, :uniqueness => true, :strict => true, :allow_nil => true
   validates :external_id, :incoming_phone_number, :presence => true, :if => :initiating_inbound_call?
 
-  attr_accessor :initiating_inbound_call, :twilio_request_to, :completed_event
+  attr_accessor :initiating_inbound_call, :completed_event, :twilio_request_to
 
   alias_attribute :"To", :to
   alias_attribute :"From", :from
   alias_attribute :"ExternalSid", :external_id
+  alias_attribute :"Variables", :variables
 
   delegate :auth_token, :to => :account, :prefix => true
   delegate :routing_instructions, :to => :active_call_router
@@ -171,7 +172,9 @@ class PhoneCall < ApplicationRecord
   def to_internal_inbound_call_json
     to_json(
       :only => internal_json_attributes.keys,
-      :methods => internal_json_methods.merge(:twilio_request_to => nil).keys
+      :methods => internal_json_methods.merge(
+        :twilio_request_to => nil
+      ).keys
     )
   end
 
@@ -192,6 +195,7 @@ class PhoneCall < ApplicationRecord
   def initiate_inbound_call
     self.initiating_inbound_call = true
     normalize_phone_numbers
+    normalize_from
     if self.incoming_phone_number = IncomingPhoneNumber.find_by_phone_number(to)
       self.account = incoming_phone_number_account
       self.voice_url = incoming_phone_number_voice_url
@@ -292,10 +296,6 @@ class PhoneCall < ApplicationRecord
     !!initiating_inbound_call
   end
 
-  def normalize_phone_numbers
-    self.to = PhonyRails.normalize_number(to)
-  end
-
   def json_attributes
     super.merge(
       :to => nil,
@@ -342,6 +342,15 @@ class PhoneCall < ApplicationRecord
       :to => nil,
       :from => nil
     }
+  end
+
+  def normalize_from
+    normalized_from = PhonyRails.normalize_number(active_call_router.normalize_from)
+    self.from = normalized_from if normalized_from
+  end
+
+  def normalize_phone_numbers
+    self.to = PhonyRails.normalize_number(to)
   end
 
   def format_number(number)

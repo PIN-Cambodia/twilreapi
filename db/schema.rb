@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901065806) do
+ActiveRecord::Schema.define(version: 20171023032518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170901065806) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "permissions", null: false
+    t.string "status", null: false
   end
 
   create_table "aws_sns_messages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -135,6 +136,7 @@ ActiveRecord::Schema.define(version: 20170901065806) do
     t.string "external_id"
     t.uuid "incoming_phone_number_id"
     t.uuid "recording_id"
+    t.json "variables", default: {}, null: false
     t.index ["account_id"], name: "index_phone_calls_on_account_id"
     t.index ["external_id"], name: "index_phone_calls_on_external_id", unique: true
     t.index ["incoming_phone_number_id"], name: "index_phone_calls_on_incoming_phone_number_id"

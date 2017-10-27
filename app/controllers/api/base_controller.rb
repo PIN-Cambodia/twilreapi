@@ -4,7 +4,7 @@ class Api::BaseController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found!
   respond_to :json
-  before_action :request_basic_auth, :doorkeeper_authorize!
+  before_action :request_basic_auth, :api_authorize!
 
   def create
     build_resource
@@ -24,6 +24,10 @@ class Api::BaseController < ApplicationController
   end
 
   private
+
+  def api_authorize!
+    doorkeeper_authorize!
+  end
 
   def respond_with_create_resource
     respond_with(resource, respond_with_create_resource_options)
@@ -97,6 +101,6 @@ class Api::BaseController < ApplicationController
   end
 
   def current_account
-    @current_account ||= Account.find(doorkeeper_token && doorkeeper_token.resource_owner_id)
+    @current_account ||= Account.enabled.find(doorkeeper_token && doorkeeper_token.resource_owner_id)
   end
 end

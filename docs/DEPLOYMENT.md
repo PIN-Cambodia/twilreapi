@@ -25,7 +25,14 @@ Set the following ENV Variables:
 
 ```
 SECRET_KEY_BASE=`bundle exec rails secret`
+RAILS_MAX_THREADS=32
 ```
+
+Note `RAILS_MAX_THREADS=32` comes from the default configuration for puma on Elastic Beanstalk. The setting is in `/opt/elasticbeanstalk/support/conf/pumaconf.rb`
+
+#### Apply Application Version Lifecycle Policy
+
+Follow [this guide](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-lifecycle.html) to apply an application version lifecycle policy to avoid hitting the limit of stored application versions.
 
 #### Connecting to RDS
 
@@ -53,7 +60,7 @@ $ eb ssh <environment-name> --profile <profile-name> -e "ssh -A"
 $ ssh <ip-of-twilreapi-instance>
 ```
 
-CREATE_ADMIN_ACCOUNT=1 ADMIN_ACCOUNT_PERMISSIONS=comma_separated_list_of_permissions bin/rails db:seed
+ADMIN_ACCOUNT_PERMISSIONS=comma_separated_list_of_permissions bin/rails db:seed
 
 ##### Move into source code directory and su to root
 
@@ -71,25 +78,25 @@ $ bundle exec rake db:schema:load
 ##### Setup an admin account for managing Inbound Phone Calls
 
 ```
-$ CREATE_ADMIN_ACCOUNT=1 ADMIN_ACCOUNT_PERMISSIONS=manage_inbound_phone_calls bundle exec rake db:seed
+$ ADMIN_ACCOUNT_PERMISSIONS=manage_inbound_phone_calls bundle exec rake db:seed
 ```
 
 ##### Setup an admin account for managing Phone Call Events
 
 ```
-$ CREATE_ADMIN_ACCOUNT=1 ADMIN_ACCOUNT_PERMISSIONS=manage_phone_call_events bundle exec rake db:seed
+$ ADMIN_ACCOUNT_PERMISSIONS=manage_phone_call_events bundle exec rake db:seed
 ```
 
 ##### Setup an admin account for managing Call Data Records
 
 ```
-$ CREATE_ADMIN_ACCOUNT=1 ADMIN_ACCOUNT_PERMISSIONS=manage_call_data_records bundle exec rake db:seed
+$ ADMIN_ACCOUNT_PERMISSIONS=manage_call_data_records bundle exec rake db:seed
 ```
 
 ##### Setup an admin account for managing AWS SNS Messages
 
 ```
-$ CREATE_ADMIN_ACCOUNT=1 ADMIN_ACCOUNT_PERMISSIONS=manage_aws_sns_messages bundle exec rake db:seed
+$ ADMIN_ACCOUNT_PERMISSIONS=manage_aws_sns_messages bundle exec rake db:seed
 ```
 
 ##### Setup a user account
@@ -159,6 +166,7 @@ Ensure you set `DATABASE_URL` and `SECRET_KEY_BASE` to the same values as you sp
 RAILS_SKIP_ASSET_COMPILATION=true
 RAILS_SKIP_MIGRATIONS=true
 PROCESS_ACTIVE_ELASTIC_JOBS=true
+RAILS_MAX_THREADS=32
 ```
 
 For the worker environment that processes outbound calls set the following variables:

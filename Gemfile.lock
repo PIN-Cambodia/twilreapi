@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/dwilkie/somleng-twilio_http_client.git
-  revision: 3c24b438d6cea4cb5a457d0943fd13c224dc5069
+  revision: db84fa5cda98038565997ee70f1b80a92ab3e743
   specs:
-    somleng-twilio_http_client (0.1.0)
+    somleng-twilio_http_client (0.1.1)
       httparty
 
 GIT
@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router.git
-  revision: 8088a962ca73d5a1a66350f91ae436ee7ae5ffa9
+  revision: 2ef37bd943a006e6112509f36a0be7af230c26f3
   specs:
-    twilreapi-active_call_router (0.1.0)
+    twilreapi-active_call_router (0.2.0)
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-worker.git
@@ -361,4 +361,4 @@ DEPENDENCIES
   wisper-rspec
 
 BUNDLED WITH
-   1.15.3
+   1.16.0.pre.2

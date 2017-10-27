@@ -5,27 +5,66 @@ describe "'/api/admin/phone_calls/'" do
     super.merge(:permissions => [:manage_inbound_phone_calls])
   end
 
+  def setup_scenario
+  end
+
+  before do
+    setup_scenario
+  end
+
   describe "POST '/'" do
     let(:params) { {} }
-
-    def setup_scenario
-    end
 
     def post_phone_call
       do_request(:post, api_admin_phone_calls_path, params)
     end
 
-    before do
-      setup_scenario
+    def setup_scenario
       post_phone_call
     end
 
-    context "unauthorized request" do
+    context "wrong AuthToken" do
+      let(:http_basic_auth_password) { "wrong" }
+      it { assert_unauthorized! }
+    end
+
+    context "account with no permissions" do
       def account_params
         super.merge(:permissions => [])
       end
 
-      it { assert_unauthorized! }
+      context "unauthorized request" do
+        it { assert_unauthorized! }
+      end
+
+      context "NO_ADMIN_AUTH=1" do
+        let(:authorization_headers) { {} }
+
+        def env
+          {"NO_ADMIN_AUTH" => "1"}
+        end
+
+        def setup_scenario
+          stub_env(env)
+          super
+        end
+
+        def assert_invalid_request!
+          super
+          expect(response.headers).not_to have_key("WWW-Authenticate")
+        end
+
+        it { assert_invalid_request! }
+
+        context "production" do
+          def setup_scenario
+            allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new("production"))
+            super
+          end
+
+          it { assert_unauthorized! }
+        end
+      end
     end
 
     context "authorized request" do
@@ -33,11 +72,18 @@ describe "'/api/admin/phone_calls/'" do
       let(:external_id) { generate(:external_id) }
       let(:from) { "2442" }
 
+      let(:variables) {
+        {
+          "sip_from_host" => "103.9.189.2"
+        }
+      }
+
       let(:params) {
         {
           "To" => to,
           "From" => from,
-          "ExternalSid" => external_id
+          "ExternalSid" => external_id,
+          "Variables" => variables
         }
       }
 
@@ -52,18 +98,19 @@ describe "'/api/admin/phone_calls/'" do
       context "valid request" do
         let(:incoming_phone_number) { create(:incoming_phone_number, :with_optional_attributes, :phone_number => to) }
         let(:parsed_response) { JSON.parse(response.body) }
-        let(:phone_call) { PhoneCall.find(parsed_response["sid"]) }
-
+        let(:created_phone_call) { PhoneCall.find(parsed_response["sid"]) }
 
         def setup_scenario
           incoming_phone_number
+          super
         end
 
         def assert_valid_request!
           expect(response.code).to eq("201")
-          expect(response.headers["Location"]).to eq(api_admin_phone_call_url(phone_call))
-          expect(phone_call.from).to eq(from)
-          expect(parsed_response.keys).to match_array(JSON.parse(phone_call.to_internal_inbound_call_json).keys)
+          expect(response.headers["Location"]).to eq(api_admin_phone_call_url(created_phone_call))
+          expect(created_phone_call.from).to eq(from)
+          expect(created_phone_call.variables).to eq(variables)
+          expect(parsed_response.keys).to match_array(JSON.parse(created_phone_call.to_internal_inbound_call_json).keys)
         end
 
         it { assert_valid_request! }
@@ -78,7 +125,7 @@ describe "'/api/admin/phone_calls/'" do
       do_request(:get, api_admin_phone_call_path(phone_call))
     end
 
-    before do
+    def setup_scenario
       get_phone_call
     end
 
