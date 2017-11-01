@@ -7,24 +7,24 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_biller-unicef_io.git
-  revision: bdcdd543456deb09108bda006dbec1020e6fffaf
+  revision: 79fd3846c8227629f1e00bfc89962742c0cc197b
   specs:
     twilreapi-active_biller-unicef_io (0.1.0)
-      torasup (~> 0.1.2)
+      torasup (~> 0.2.0)
       twilreapi-active_biller
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_biller.git
-  revision: c6eb88e30657f7ac148de5b67082b99feaf8dfe1
+  revision: 3ec28f081bb278a6d925e5e921b791709439948d
   specs:
     twilreapi-active_biller (0.1.0)
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router-unicef_io.git
-  revision: 8eb7e4ab99dd00f21c9695e050fc8fbc5b835a36
+  revision: cc9c040e145253a166fc2d8dd1099554a866178f
   specs:
     twilreapi-active_call_router-unicef_io (0.1.0)
-      torasup (~> 0.1.2)
+      torasup (~> 0.2.0)
       twilreapi-active_call_router
 
 GIT
@@ -212,7 +212,7 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     pg (0.21.0)
-    phony (2.15.47)
+    phony (2.15.48)
     phony_rails (0.14.6)
       activesupport (>= 3.0)
       phony (> 2.15)
@@ -302,7 +302,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    torasup (0.1.2)
+    torasup (0.2.0)
       countries (>= 1.1.0)
       deep_merge
       phony (>= 2.15.47)
@@ -361,4 +361,4 @@ DEPENDENCIES
   wisper-rspec
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0.pre.3
