@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
-  revision: 15682b5f286ac2d12c2a8b84c4a58947106a72fc
+  revision: 095582571d4f1f5f07c567a84d3b95653c38f77e
   specs:
-    twilreapi-active_call_router-pin_cambodia (0.2.3)
+    twilreapi-active_call_router-pin_cambodia (0.2.4)
       torasup (~> 0.1.2)
       twilreapi-active_call_router (~> 0.2.0)
 
