@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://github.com/dwilkie/twilreapi-active_call_router-pin_cambodia.git
-  revision: 8f09b9dab0dfbdc54c0bbf73b0b7f7b9991ddc5c
+  revision: 04f55687ebb58ed28feade2052b8b89c5e231e5d
   specs:
-    twilreapi-active_call_router-pin_cambodia (0.2.1)
+    twilreapi-active_call_router-pin_cambodia (0.2.2)
       torasup (~> 0.1.2)
       twilreapi-active_call_router (~> 0.2.0)
 
@@ -162,7 +162,7 @@ GEM
       unicode_utils (~> 1.4)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    deep_merge (1.1.1)
+    deep_merge (1.2.1)
     diff-lcs (1.3)
     docile (1.1.5)
     domain_name (0.5.20170404)
@@ -361,4 +361,4 @@ DEPENDENCIES
   wisper-rspec
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0.pre.3
