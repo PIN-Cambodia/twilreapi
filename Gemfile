@@ -70,4 +70,3 @@ group :test do
   gem 'wisper-rspec'
   gem 'codeclimate-test-reporter', "~> 1.0.0"
 end
-
