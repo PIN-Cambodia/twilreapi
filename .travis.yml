@@ -21,14 +21,14 @@ deploy:
   - provider: elasticbeanstalk
     app: somleng-twilreapi
     env: somleng-twilreapi-webserver
-    bucket_name: ci-deploy.ews1294.info
+    bucket_name: deploy.ews1294.info
     on:
       repo: somleng/twilreapi
       branch: somleng.ews1294.info
   - provider: elasticbeanstalk
     app: somleng-twilreapi
     env: somleng-twilreapi-worker
-    bucket_name: ci-deploy.ews1294.info
+    bucket_name: deploy.ews1294.info
     on:
       repo: somleng/twilreapi
       branch: somleng.ews1294.info
