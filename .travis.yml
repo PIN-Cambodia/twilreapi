@@ -7,7 +7,6 @@ services:
 env:
   global:
     - START_SIMPLECOV=1
-    - AWS_REGION=ap-southeast-1
     - secure: "r7FTKe02NP5KnPO1iyl76WeCUVEwIPRso+lExZYgWqY0Q/xqwz9Augf9PXP1FlDLimz/i76kHba+pM5isyy61SPj2tw9n3nqeiVZ7M033y+Hnl4JYxkx4E/mjEsEHtcO54T/9cFNmEuYnizx7DRlFm4PETM0GlnXzhNKeCWxmEnXQkRGv5lkPAhacgU7QwAKyc9T0QqqwriO1dLA3tkeV4zVdwDilHgwAB5xTcbFv6pU5Htg3fSvoxLaN9tOgFT9OxZZblWykYqQZl2EoZGUcov0f+nLoofOS0AkmiKvZPOJDia8FZNUraW55tcBW6DyO6586h2Z3/iDjGb3YtD04C3sF6phmgR2mkiF7gohox9/7mQOcJTnvp/X+n2zusKJrIDN0RtUKWe3T9mb2PQAQ74FjelP29FoYYyKhT98dteYpKNdeapmVN9aZtKHdeFBEHfwScWaF53GoSbetUTgnnKtvsX5wDmZZh3cF0mwfHfPTkil5zp/hTrFHi85AQsCll348lwSgScod7Y2tjk4Qu4RPWxsBUCvu9rXVrL0YR+vvM3oYRxIwdzHQl1d7UdquGlP3+kuxO++1eRdOs6x493eEXmLsYTu1i/5VEfEf9l7I7eclXzAJfiHJyg8SYgaoXOLt//kkm4tcUqZJkr2GSetvrKoWmeRx7JOPJGxeL4="
 addons:
   postgresql: '9.6'
@@ -19,6 +18,7 @@ before_script:
   - psql -U postgres -c "create extension pgcrypto"
 deploy:
   - provider: elasticbeanstalk
+    region: ap-southeast-1
     app: somleng-twilreapi
     env: somleng-twilreapi-webserver
     bucket_name: deploy.ews1294.info
@@ -26,6 +26,7 @@ deploy:
       repo: somleng/twilreapi
       branch: somleng.ews1294.info
   - provider: elasticbeanstalk
+    region: ap-southeast-1
     app: somleng-twilreapi
     env: somleng-twilreapi-worker
     bucket_name: deploy.ews1294.info
