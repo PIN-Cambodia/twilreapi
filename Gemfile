@@ -40,7 +40,6 @@ gem 'twilreapi-active_biller-pin_cambodia', github: 'dwilkie/twilreapi-active_bi
 
 # Use active_elastic_job as queue adapter and excute jobs in this application
 gem 'active_elastic_job', github: 'tawan/active-elastic-job'
-gem 'twilreapi-worker',   github: 'dwilkie/twilreapi-worker'
 
 # Use shoryuken as queue adapter
 # gem 'shoryuken'
