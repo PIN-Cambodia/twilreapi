@@ -5,6 +5,8 @@ services:
 env:
   global:
     - START_SIMPLECOV=1
+    - AWS_REGION=ap-southeast-1
+    - secure: "r7FTKe02NP5KnPO1iyl76WeCUVEwIPRso+lExZYgWqY0Q/xqwz9Augf9PXP1FlDLimz/i76kHba+pM5isyy61SPj2tw9n3nqeiVZ7M033y+Hnl4JYxkx4E/mjEsEHtcO54T/9cFNmEuYnizx7DRlFm4PETM0GlnXzhNKeCWxmEnXQkRGv5lkPAhacgU7QwAKyc9T0QqqwriO1dLA3tkeV4zVdwDilHgwAB5xTcbFv6pU5Htg3fSvoxLaN9tOgFT9OxZZblWykYqQZl2EoZGUcov0f+nLoofOS0AkmiKvZPOJDia8FZNUraW55tcBW6DyO6586h2Z3/iDjGb3YtD04C3sF6phmgR2mkiF7gohox9/7mQOcJTnvp/X+n2zusKJrIDN0RtUKWe3T9mb2PQAQ74FjelP29FoYYyKhT98dteYpKNdeapmVN9aZtKHdeFBEHfwScWaF53GoSbetUTgnnKtvsX5wDmZZh3cF0mwfHfPTkil5zp/hTrFHi85AQsCll348lwSgScod7Y2tjk4Qu4RPWxsBUCvu9rXVrL0YR+vvM3oYRxIwdzHQl1d7UdquGlP3+kuxO++1eRdOs6x493eEXmLsYTu1i/5VEfEf9l7I7eclXzAJfiHJyg8SYgaoXOLt//kkm4tcUqZJkr2GSetvrKoWmeRx7JOPJGxeL4="
 addons:
   postgresql: '9.6'
   code_climate:
@@ -15,41 +17,16 @@ before_script:
   - psql -U postgres -c "create extension pgcrypto"
 deploy:
   - provider: elasticbeanstalk
-    edge: true
-    access-key-id:
-      secure: "04oV9WHvUkqi5SEsFg2HLWNx54gXAQjyRwW8CXgv6QELLjRRigzDGoYgpv0vggPEuwOQf7kabEFnv+p2GxpYmnvJZeW6FtpyNP2qLWHmcCto+GYqBJSw7bC5DzWF2CXLRFJjVQoHj2GI5ofEn0Mt72dWPiR6KaIzNhOpv39vELZ52+IdJ3TqhiD3lH9oOuOv1jgB37XRGvs5PeeIL1WS/bIVwfz12Q4K0D1kZXOegjHKVf7o+GP++EfrUys9BtDgNYkNzB76wArZS1kQZWuv6OBraMQpp+k0bj5E5p2hnjqPJnLVqxUEO7M8gD85tL5X2Bxmc2oRKVhgL7yZ0PRFKFIBXVq1YOSNfniRs710a7Y7Ts53k47okS5lYmkWsGDJTP/p4nLgekdfF11HXmkB6bJWfJO2grSYx4Rj5q/gAkpzSp2OlBpp0Uv+AjRAYXzZScYoEC/VEQAxFjs9Iknys6HXTp5xJregf2sfgQF6woTGncP6lWVb++DMIErDUaCm57A+3xGxnR+rP7EL+wcGj+DW4Y8wPCMWxDecf4PYLsAZwja9GZIOXLakyCS2gn9Ob9jClf903ZMjY11Rs0uH0phc7LNHGGyFnSf1rIR5dlu1pXFL/82EJBMp1eQx7zoFyAFRg8qTwJVYsV1nrcdSlLImkjyKBTmV/OjTtmIgpvc="
-    secret-access-key:
-      secure: "KPqgBcYUQrfxh5kff6Se1As6woZd+sKA9aXYFjTwQS4CnaF4UpteH7JAYo+xH0UoG8q0N4XwKCIL4z1rO4nFlWmfdDT93TCBA+EblWOi9h6lrHwc/KfpZ6xsVBp0wvK723L5kwhR3c+ypF2+P0qQAjHxPVfqAgaWpfX8Tu2vBMcD8mclLbpQA+yoPXfIA0K2szOTi8CN9IrotsUye+fKzlmylvMP1H0S/KkTOZsd40cIC803lnOuiezRQLWToEKMOZ/337OzpZ7do5Kn/qw0AE1dUCc/VJix9eT84IvFR4v4b/01CUvrUJuDSSWs2QcHE1QkDD/67TMRCQUsiknhw57ntYcQx9nJgcWSDOEs9WzshOsWN0T/mX41Zb74K6CBMr5Cc1WlknfeuYE/UUupJyR7AmgMudpT3pOrDCzY7plTgNrxojGRwqMvcId21+IEPim3u++jm7Nrg2IKBBbkUu4spbUsfRU31qfnGDcw7fb5scLtI0Rfj47LFP8GJVVCfbjzWO47+k2S6EaXZIATksFtZ5covkVfxdtFGgVbvNyWXeLBDLoBVuggfnypbkCllVDlj6MY3Q3sHjhs9h7g1wpk7iXFqbgyfjwvZO2OTKsOfySnhGMj5jEdwHZExXvvYBe8u8C619APis9Q14NdkEP74E5ZGG85czsdje6Bajk="
-    region: ap-southeast-1
-    app: twilreapi
-    env: twilreapi-web
-    bucket_name: pin-somlengci
+    app: somleng-twilreapi
+    env: somleng-twilreapi-webserver
+    bucket_name: ci-deploy.ews1294.info
     on:
       repo: somleng/twilreapi
       branch: somleng.ews1294.info
   - provider: elasticbeanstalk
-    edge: true
-    access-key-id:
-      secure: "04oV9WHvUkqi5SEsFg2HLWNx54gXAQjyRwW8CXgv6QELLjRRigzDGoYgpv0vggPEuwOQf7kabEFnv+p2GxpYmnvJZeW6FtpyNP2qLWHmcCto+GYqBJSw7bC5DzWF2CXLRFJjVQoHj2GI5ofEn0Mt72dWPiR6KaIzNhOpv39vELZ52+IdJ3TqhiD3lH9oOuOv1jgB37XRGvs5PeeIL1WS/bIVwfz12Q4K0D1kZXOegjHKVf7o+GP++EfrUys9BtDgNYkNzB76wArZS1kQZWuv6OBraMQpp+k0bj5E5p2hnjqPJnLVqxUEO7M8gD85tL5X2Bxmc2oRKVhgL7yZ0PRFKFIBXVq1YOSNfniRs710a7Y7Ts53k47okS5lYmkWsGDJTP/p4nLgekdfF11HXmkB6bJWfJO2grSYx4Rj5q/gAkpzSp2OlBpp0Uv+AjRAYXzZScYoEC/VEQAxFjs9Iknys6HXTp5xJregf2sfgQF6woTGncP6lWVb++DMIErDUaCm57A+3xGxnR+rP7EL+wcGj+DW4Y8wPCMWxDecf4PYLsAZwja9GZIOXLakyCS2gn9Ob9jClf903ZMjY11Rs0uH0phc7LNHGGyFnSf1rIR5dlu1pXFL/82EJBMp1eQx7zoFyAFRg8qTwJVYsV1nrcdSlLImkjyKBTmV/OjTtmIgpvc="
-    secret-access-key:
-      secure: "KPqgBcYUQrfxh5kff6Se1As6woZd+sKA9aXYFjTwQS4CnaF4UpteH7JAYo+xH0UoG8q0N4XwKCIL4z1rO4nFlWmfdDT93TCBA+EblWOi9h6lrHwc/KfpZ6xsVBp0wvK723L5kwhR3c+ypF2+P0qQAjHxPVfqAgaWpfX8Tu2vBMcD8mclLbpQA+yoPXfIA0K2szOTi8CN9IrotsUye+fKzlmylvMP1H0S/KkTOZsd40cIC803lnOuiezRQLWToEKMOZ/337OzpZ7do5Kn/qw0AE1dUCc/VJix9eT84IvFR4v4b/01CUvrUJuDSSWs2QcHE1QkDD/67TMRCQUsiknhw57ntYcQx9nJgcWSDOEs9WzshOsWN0T/mX41Zb74K6CBMr5Cc1WlknfeuYE/UUupJyR7AmgMudpT3pOrDCzY7plTgNrxojGRwqMvcId21+IEPim3u++jm7Nrg2IKBBbkUu4spbUsfRU31qfnGDcw7fb5scLtI0Rfj47LFP8GJVVCfbjzWO47+k2S6EaXZIATksFtZ5covkVfxdtFGgVbvNyWXeLBDLoBVuggfnypbkCllVDlj6MY3Q3sHjhs9h7g1wpk7iXFqbgyfjwvZO2OTKsOfySnhGMj5jEdwHZExXvvYBe8u8C619APis9Q14NdkEP74E5ZGG85czsdje6Bajk="
-    region: ap-southeast-1
-    app: twilreapi
-    env: twilreapi-worker
-    bucket_name: pin-somlengci
-    on:
-      repo: somleng/twilreapi
-      branch: somleng.ews1294.info
-  - provider: elasticbeanstalk
-    edge: true
-    access-key-id:
-      secure: "04oV9WHvUkqi5SEsFg2HLWNx54gXAQjyRwW8CXgv6QELLjRRigzDGoYgpv0vggPEuwOQf7kabEFnv+p2GxpYmnvJZeW6FtpyNP2qLWHmcCto+GYqBJSw7bC5DzWF2CXLRFJjVQoHj2GI5ofEn0Mt72dWPiR6KaIzNhOpv39vELZ52+IdJ3TqhiD3lH9oOuOv1jgB37XRGvs5PeeIL1WS/bIVwfz12Q4K0D1kZXOegjHKVf7o+GP++EfrUys9BtDgNYkNzB76wArZS1kQZWuv6OBraMQpp+k0bj5E5p2hnjqPJnLVqxUEO7M8gD85tL5X2Bxmc2oRKVhgL7yZ0PRFKFIBXVq1YOSNfniRs710a7Y7Ts53k47okS5lYmkWsGDJTP/p4nLgekdfF11HXmkB6bJWfJO2grSYx4Rj5q/gAkpzSp2OlBpp0Uv+AjRAYXzZScYoEC/VEQAxFjs9Iknys6HXTp5xJregf2sfgQF6woTGncP6lWVb++DMIErDUaCm57A+3xGxnR+rP7EL+wcGj+DW4Y8wPCMWxDecf4PYLsAZwja9GZIOXLakyCS2gn9Ob9jClf903ZMjY11Rs0uH0phc7LNHGGyFnSf1rIR5dlu1pXFL/82EJBMp1eQx7zoFyAFRg8qTwJVYsV1nrcdSlLImkjyKBTmV/OjTtmIgpvc="
-    secret-access-key:
-      secure: "KPqgBcYUQrfxh5kff6Se1As6woZd+sKA9aXYFjTwQS4CnaF4UpteH7JAYo+xH0UoG8q0N4XwKCIL4z1rO4nFlWmfdDT93TCBA+EblWOi9h6lrHwc/KfpZ6xsVBp0wvK723L5kwhR3c+ypF2+P0qQAjHxPVfqAgaWpfX8Tu2vBMcD8mclLbpQA+yoPXfIA0K2szOTi8CN9IrotsUye+fKzlmylvMP1H0S/KkTOZsd40cIC803lnOuiezRQLWToEKMOZ/337OzpZ7do5Kn/qw0AE1dUCc/VJix9eT84IvFR4v4b/01CUvrUJuDSSWs2QcHE1QkDD/67TMRCQUsiknhw57ntYcQx9nJgcWSDOEs9WzshOsWN0T/mX41Zb74K6CBMr5Cc1WlknfeuYE/UUupJyR7AmgMudpT3pOrDCzY7plTgNrxojGRwqMvcId21+IEPim3u++jm7Nrg2IKBBbkUu4spbUsfRU31qfnGDcw7fb5scLtI0Rfj47LFP8GJVVCfbjzWO47+k2S6EaXZIATksFtZ5covkVfxdtFGgVbvNyWXeLBDLoBVuggfnypbkCllVDlj6MY3Q3sHjhs9h7g1wpk7iXFqbgyfjwvZO2OTKsOfySnhGMj5jEdwHZExXvvYBe8u8C619APis9Q14NdkEP74E5ZGG85czsdje6Bajk="
-    region: ap-southeast-1
-    app: twilreapi
-    env: twilreapi-cdr-processor
-    bucket_name: pin-somlengci
+    app: somleng-twilreapi
+    env: somleng-twilreapi-worker
+    bucket_name: ci-deploy.ews1294.info
     on:
       repo: somleng/twilreapi
       branch: somleng.ews1294.info
