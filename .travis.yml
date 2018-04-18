@@ -33,5 +33,13 @@ deploy:
     on:
       repo: somleng/twilreapi
       branch: somleng.ews1294.info
+  - provider: elasticbeanstalk
+    region: ap-southeast-1
+    app: somleng-twilreapi
+    env: somleng-twilreapi-caller-worker
+    bucket_name: deploy.ews1294.info
+    on:
+      repo: somleng/twilreapi
+      branch: somleng.ews1294.info
 after_success:
   - bundle exec codeclimate-test-reporter
