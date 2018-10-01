@@ -1,21 +1,27 @@
 language: ruby
-sudo: false
-cache:
-  bundler: true
-services:
-  - postgresql
+cache: bundler
+addons:
+  postgresql: '10'
+  apt:
+    packages:
+      - postgresql-10
+      - postgresql-client-10
 env:
   global:
-    - START_SIMPLECOV=1
+    - AWS_REGION=ap-southeast-1
+    - PGPORT=5433
+    - CC_TEST_REPORTER_ID=0d3f29fe1c737e27dcc5b679ddf2af93ddcbe3cf42f4b78cfe3324ba9270b545
+    - CODECOV_TOKEN="2aaec902-1e35-4664-aa6c-6f1ace7bb77d"
     - secure: "r7FTKe02NP5KnPO1iyl76WeCUVEwIPRso+lExZYgWqY0Q/xqwz9Augf9PXP1FlDLimz/i76kHba+pM5isyy61SPj2tw9n3nqeiVZ7M033y+Hnl4JYxkx4E/mjEsEHtcO54T/9cFNmEuYnizx7DRlFm4PETM0GlnXzhNKeCWxmEnXQkRGv5lkPAhacgU7QwAKyc9T0QqqwriO1dLA3tkeV4zVdwDilHgwAB5xTcbFv6pU5Htg3fSvoxLaN9tOgFT9OxZZblWykYqQZl2EoZGUcov0f+nLoofOS0AkmiKvZPOJDia8FZNUraW55tcBW6DyO6586h2Z3/iDjGb3YtD04C3sF6phmgR2mkiF7gohox9/7mQOcJTnvp/X+n2zusKJrIDN0RtUKWe3T9mb2PQAQ74FjelP29FoYYyKhT98dteYpKNdeapmVN9aZtKHdeFBEHfwScWaF53GoSbetUTgnnKtvsX5wDmZZh3cF0mwfHfPTkil5zp/hTrFHi85AQsCll348lwSgScod7Y2tjk4Qu4RPWxsBUCvu9rXVrL0YR+vvM3oYRxIwdzHQl1d7UdquGlP3+kuxO++1eRdOs6x493eEXmLsYTu1i/5VEfEf9l7I7eclXzAJfiHJyg8SYgaoXOLt//kkm4tcUqZJkr2GSetvrKoWmeRx7JOPJGxeL4="
-addons:
-  postgresql: '9.6'
-  code_climate:
-    repo_token:
-      secure: "ixvE5zOUySIHsUCLWjuoDqikwjW9yHERucrouHRw6TMLZHdMw2dLtHoANOJblSNvQ/RY+w1qNEX7wUgKbjoy7MfxZauNSFzoiCBejrsSyXSGtopIdUZilRyPP8OPS2f4RBlTf5pNX1iFay1UEM+o38NyOW68LTaQahJ9pUjGDsljdqQcZJSX6NxZ3HiY4shyetzeA3zlC+31GG02hd44zsvh05oRJrlT0wAa6PrzmAc0hHWWDhCCe/yN+JQyM5Ac+vFq7/uDUkrpj4dWKauZfpxk7kdU+QmtSEW+qeC65C9kCRxWqSKlqfhPs8WZjy//gQ5dk1Y7asq+fwvoBU9j90XI+31++TX8HB7Yb2U3wYleLJIE9bYIsnwFAv0gp5KuX65Zaw64xEvH6wmiDXDFYmktiFInUz4skk26zjB/7n3wCrVPD5ZbzXIzD0STb+BHwoRkMdYjfCuUmG1YpOOHZiOt8kaiE2413GuvD8C5UYoyltJzkPHAcwf2f6rqa1+trRn+1GwlppICQodgkMHE3Gv5QVy0Lm+7l+7qQ2zOvqWU2UjjYKeFR17MFgZ+xZ6bP6rkm8pl5OleT6p1fpJzclSEn5SMxM0xQgu5Uw5gtHIB82bJkzuACaecpGo0HkC/JJ9/MJ9FZspiFLGttGq1cdbCK37iw50ynB4GN05U2Y0="
+before_install:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - gem install bundler
 before_script:
-  - psql -c 'create database twilreapi_test;' -U postgres
-  - psql -U postgres -c "create extension pgcrypto"
+  - psql -c 'create database twilreapi_test;' -U travis
+  - ./cc-test-reporter before-build
+after_success:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 deploy:
   - provider: elasticbeanstalk
     region: ap-southeast-1
@@ -41,5 +47,3 @@ deploy:
     on:
       repo: somleng/twilreapi
       branch: somleng.ews1294.info
-after_success:
-  - bundle exec codeclimate-test-reporter
