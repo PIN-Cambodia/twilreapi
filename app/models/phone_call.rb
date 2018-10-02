@@ -1,23 +1,21 @@
-# frozen_string_literal: true
-
 class PhoneCall < ApplicationRecord
   include Wisper::Publisher
 
   TWILIO_CALL_DIRECTIONS = {
-    'inbound' => 'inbound',
-    'outbound' => 'outbound-api'
+    "inbound" => "inbound",
+    "outbound" => "outbound-api"
   }.freeze
 
   TWILIO_CALL_STATUS_MAPPINGS = {
-    'queued' => 'queued',
-    'initiated' => 'queued',
-    'ringing' => 'ringing',
-    'answered' => 'in-progress',
-    'busy' => 'busy',
-    'failed' => 'failed',
-    'not_answered' => 'no-answer',
-    'completed' => 'completed',
-    'canceled' => 'canceled'
+    "queued" => "queued",
+    "initiated" => "queued",
+    "ringing" => "ringing",
+    "answered" => "in-progress",
+    "busy" => "busy",
+    "failed" => "failed",
+    "not_answered" => "no-answer",
+    "completed" => "completed",
+    "canceled" => "canceled"
   }.freeze
 
   include TwilioApiResource
@@ -28,7 +26,7 @@ class PhoneCall < ApplicationRecord
   belongs_to :recording, optional: true
 
   has_one    :call_data_record
-  has_many   :phone_call_events, class_name: 'PhoneCallEvent::Base'
+  has_many   :phone_call_events, class_name: "PhoneCallEvent::Base"
   has_many   :recordings
 
   before_validation :normalize_phone_numbers
@@ -209,7 +207,7 @@ class PhoneCall < ApplicationRecord
   def caller_name; end
 
   def direction
-    TWILIO_CALL_DIRECTIONS[call_data_record_direction || (incoming_phone_number.present? && 'inbound') || 'outbound']
+    TWILIO_CALL_DIRECTIONS[call_data_record_direction || (incoming_phone_number.present? && "inbound") || "outbound"]
   end
 
   def duration
@@ -244,7 +242,7 @@ class PhoneCall < ApplicationRecord
 
   def subresource_uris
     uris = {}
-    uris['recordings'] = Rails.application.routes.url_helpers.api_twilio_account_call_recordings_path(account_id, id) if recordings.any?
+    uris["recordings"] = Rails.application.routes.url_helpers.api_twilio_account_call_recordings_path(account_id, id) if recordings.any?
     uris
   end
 
@@ -257,10 +255,10 @@ class PhoneCall < ApplicationRecord
   end
 
   def active_call_router
-    @active_call_router ||= ActiveCallRouterAdapter.instance(
-      phone_call: self,
-      **active_call_router_options(:default_active_call_router_options),
-      **active_call_router_options(:active_call_router_options)
+    @active_call_router ||= Twilreapi::ActiveCallRouter::CallRouter.new(
+      source: from,
+      destination: to,
+      source_matcher: account.source_matcher
     )
   end
 
@@ -339,7 +337,7 @@ class PhoneCall < ApplicationRecord
   end
 
   def normalize_from
-    normalized_from = PhonyRails.normalize_number(active_call_router.normalize_from)
+    normalized_from = PhonyRails.normalize_number(active_call_router.normalized_source)
     self.from = normalized_from if normalized_from
   end
 
@@ -358,22 +356,12 @@ class PhoneCall < ApplicationRecord
     nil
   end
 
-  def active_call_router_options(key)
-    Hash[
-      Rails.application.secrets[key].to_s.split(';').map do |e|
-        e.split('=')
-      end
-    ].symbolize_keys
-  end
-
   def read_attribute_for_serialization(key)
     method_to_serialize = attributes_for_serialization[key]
     method_to_serialize && send(method_to_serialize) || super
   end
 
   def attributes_for_serialization
-    {
-      'status' => :twilio_status
-    }
+    { "status" => :twilio_status }
   end
 end
