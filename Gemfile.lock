@@ -64,26 +64,10 @@ GIT
       httparty
 
 GIT
-  remote: https://github.com/somleng/twilreapi-active_biller-pin_cambodia.git
-  revision: d5e847e98343e89516ddd18378f8fc77c37e835b
-  specs:
-    twilreapi-active_biller-pin_cambodia (0.1.0)
-      torasup (~> 0.1.2)
-      twilreapi-active_biller
-
-GIT
   remote: https://github.com/somleng/twilreapi-active_biller.git
   revision: 3ec28f081bb278a6d925e5e921b791709439948d
   specs:
     twilreapi-active_biller (0.1.0)
-
-GIT
-  remote: https://github.com/somleng/twilreapi-active_call_router-pin_cambodia.git
-  revision: 547ad4e52e754b89d41426cab1c631c98da72657
-  specs:
-    twilreapi-active_call_router-pin_cambodia (0.2.5)
-      torasup (~> 0.1.2)
-      twilreapi-active_call_router (~> 0.2.0)
 
 GIT
   remote: https://github.com/somleng/twilreapi-active_call_router.git
@@ -175,15 +159,9 @@ GEM
       url
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
-    countries (2.1.4)
-      i18n_data (~> 0.8.0)
-      money (~> 6.9)
-      sixarm_ruby_unaccent (~> 1.1)
-      unicode_utils (~> 1.4)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
-    deep_merge (1.2.1)
     diff-lcs (1.3)
     docile (1.3.1)
     domain_name (0.5.20180417)
@@ -205,7 +183,6 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
-    i18n_data (0.8.0)
     jaro_winkler (1.5.1)
     jmespath (1.4.0)
     json (2.1.0)
@@ -325,7 +302,6 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sixarm_ruby_unaccent (1.2.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
@@ -340,17 +316,12 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    torasup (0.1.2)
-      countries (>= 1.1.0)
-      deep_merge
-      phony (>= 2.15.47)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
     unicode-display_width (1.4.0)
-    unicode_utils (1.4.0)
     url (0.3.2)
     webmock (3.4.2)
       addressable (>= 2.3.6)
@@ -393,9 +364,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   twilreapi-active_biller!
-  twilreapi-active_biller-pin_cambodia!
   twilreapi-active_call_router!
-  twilreapi-active_call_router-pin_cambodia!
   validate_url!
   webmock
   wisper!
