@@ -12,6 +12,7 @@ env:
     - PGPORT=5433
     - CC_TEST_REPORTER_ID=0d3f29fe1c737e27dcc5b679ddf2af93ddcbe3cf42f4b78cfe3324ba9270b545
     - CODECOV_TOKEN="2aaec902-1e35-4664-aa6c-6f1ace7bb77d"
+    - secure: "1wxMDAOlil5UabsgsE2Ol1exCRNU5HZe/18gE63XsfEVr3+TiJgujJCWUZmIwhtk7hVjknadqt8BwVKpeIa2Pw+9E45xXrNWZGQYDNhMoV4dDrxUeveYO3t/MWyQAcI+ATbSe0j5AZmPAkBbcoWY8lichxLljghjFXxsPrSczKORkrDPxohxTV5/PEwTXbZCkaovUlz36cAcp40lNA3JsXhos8GHiPfNPohfLJMLKZoyXjKoC6GJtaXVmyihwY9W8WKQJ8eqGHWY8nEiVwhoCCxFf6bHrMz32Hza0XLjxasZym3r4tf5/XgKnEAI2PKqAfGdtqXhAOtW3Dp7hQBKZDj2KuGnJk5jpu8JI6+uSCqSA24qP4AC/jsdfCGjhaDwivJh7D9McbVOwcf/Jcw3gwizmyAQoW+6H8JpJ0bPYa3kAsG0W0T6JqU2GWYKInHcSlRAxnY3RqD+TFwSAp4ljN3o8t0rvmKoRgleIvResvf7cq41NFxMR5T/URiumOG/sn8ritraCqPwgJtiSPRO1RxDDhSC6k1XdOfnRulfZ0fV587rmugl5Dhl4Li8y0FggR4cisddJFNRdOR3ZFoP/ejZ+rryKcTybfjtPMwskhcF6sYw6H13SHTZ6BpPW89WbY/IE8ibN0gh4Rl5cgLF5gcv1+aGDeJ3QiW6U0CL0S4="
 before_install:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
