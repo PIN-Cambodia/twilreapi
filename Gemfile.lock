@@ -1,41 +1,6 @@
 GIT
-  remote: https://github.com/dwilkie/somleng-twilio_http_client.git
-  revision: db84fa5cda98038565997ee70f1b80a92ab3e743
-  specs:
-    somleng-twilio_http_client (0.1.1)
-      httparty
-
-GIT
-  remote: https://github.com/dwilkie/twilreapi-active_biller-unicef_io.git
-  revision: 79fd3846c8227629f1e00bfc89962742c0cc197b
-  specs:
-    twilreapi-active_biller-unicef_io (0.1.0)
-      torasup (~> 0.2.0)
-      twilreapi-active_biller
-
-GIT
-  remote: https://github.com/dwilkie/twilreapi-active_biller.git
-  revision: 3ec28f081bb278a6d925e5e921b791709439948d
-  specs:
-    twilreapi-active_biller (0.1.0)
-
-GIT
-  remote: https://github.com/dwilkie/twilreapi-active_call_router-unicef_io.git
-  revision: a30062684de7f30d67bd5e4e7c7c5b88a68a5a80
-  specs:
-    twilreapi-active_call_router-unicef_io (0.1.1)
-      torasup (~> 0.2.1)
-      twilreapi-active_call_router
-
-GIT
-  remote: https://github.com/dwilkie/twilreapi-active_call_router.git
-  revision: 2ef37bd943a006e6112509f36a0be7af230c26f3
-  specs:
-    twilreapi-active_call_router (0.2.0)
-
-GIT
   remote: https://github.com/krisleech/wisper.git
-  revision: 7e605f5731dad38a40828c1cf57937d35be8a984
+  revision: a73b72b17e5665614f83fffd471bab65c6670e43
   specs:
     wisper (2.0.0)
 
@@ -48,113 +13,139 @@ GIT
 
 GIT
   remote: https://github.com/perfectline/validates_url.git
-  revision: 0844e2528378d37d28d8a24c80ab82cce2b5e772
+  revision: b170db5a211b7e277c76727a46559c36b989e430
   specs:
     validate_url (1.0.2)
       activemodel (>= 3.0.0)
-      addressable
 
 GIT
   remote: https://github.com/refile/refile-s3.git
-  revision: 78a74b60a597dd1174b0599be919689d41d5f118
+  revision: 60572a111be27abe9707b951a0e363d78bb533d7
   specs:
     refile-s3 (0.2.0)
-      aws-sdk (~> 2.0)
+      aws-sdk-s3 (~> 1.13)
       refile (~> 0.6.0)
 
 GIT
   remote: https://github.com/refile/refile.git
-  revision: 4e82923a551b3acce1190562cb2037dd7df9577b
+  revision: 47778bdfceb81dc34f348a050232e7ab70a85e44
   specs:
     refile (0.6.2)
       mime-types
-      rest-client (~> 1.8)
-      sinatra (>= 1.4.5)
+      rest-client (>= 1.8, < 3.0)
+      sinatra (>= 2.0.0, <= 3.0.0)
 
 GIT
-  remote: https://github.com/sinatra/sinatra.git
-  revision: 7c6c03be899e5dd5b26c0b31a588f4e2ad6e824c
+  remote: https://github.com/samnang/active-elastic-job.git
+  revision: db55463b46e9ea0a66c33d5e81d602fda9289243
+  branch: upgrade_to_aws_sdk_3
   specs:
-    rack-protection (2.0.0)
-      rack
-    sinatra (2.0.0)
-      mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.0)
-      tilt (~> 2.0)
-
-GIT
-  remote: https://github.com/tawan/active-elastic-job.git
-  revision: 9c748eae1077a90a0f803a02cc7b08d4f12bd3d3
-  specs:
-    active_elastic_job (2.0.0)
-      aws-sdk (~> 2)
+    active_elastic_job (2.0.1)
+      aws-sdk-sqs (~> 1)
       rails (>= 4.2)
 
 GIT
-  remote: https://github.com/thoughtbot/shoulda-matchers.git
-  revision: c0960bd72dd41c4e9bd8b4375254f539776bfe95
+  remote: https://github.com/sinatra/sinatra.git
+  revision: b7c10649cad56f3263df089027621fb1753620cb
   specs:
-    shoulda-matchers (3.1.2)
+    rack-protection (2.0.4)
+      rack
+    sinatra (2.0.4)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.4)
+      tilt (~> 2.0)
+
+GIT
+  remote: https://github.com/somleng/somleng-twilio_http_client.git
+  revision: db84fa5cda98038565997ee70f1b80a92ab3e743
+  specs:
+    somleng-twilio_http_client (0.1.1)
+      httparty
+
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: e2154f9e4e789fef5011245024b9e4a4eb830ffb
+  specs:
+    shoulda-matchers (4.0.0.rc1)
       activesupport (>= 4.2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (4.12.2)
+    aasm (5.0.1)
       concurrent-ruby (~> 1.0)
-    actioncable (5.1.6)
-      actionpack (= 5.1.6)
+    actioncable (5.2.1)
+      actionpack (= 5.2.1)
       nio4r (~> 2.0)
-      websocket-driver (~> 0.6.1)
-    actionmailer (5.1.6)
-      actionpack (= 5.1.6)
-      actionview (= 5.1.6)
-      activejob (= 5.1.6)
+      websocket-driver (>= 0.6.1)
+    actionmailer (5.2.1)
+      actionpack (= 5.2.1)
+      actionview (= 5.2.1)
+      activejob (= 5.2.1)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.1.6)
-      actionview (= 5.1.6)
-      activesupport (= 5.1.6)
+    actionpack (5.2.1)
+      actionview (= 5.2.1)
+      activesupport (= 5.2.1)
       rack (~> 2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.1.6)
-      activesupport (= 5.1.6)
+    actionview (5.2.1)
+      activesupport (= 5.2.1)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (5.1.6)
-      activesupport (= 5.1.6)
+    activejob (5.2.1)
+      activesupport (= 5.2.1)
       globalid (>= 0.3.6)
-    activemodel (5.1.6)
-      activesupport (= 5.1.6)
-    activerecord (5.1.6)
-      activemodel (= 5.1.6)
-      activesupport (= 5.1.6)
-      arel (~> 8.0)
-    activesupport (5.1.6)
+    activemodel (5.2.1)
+      activesupport (= 5.2.1)
+    activerecord (5.2.1)
+      activemodel (= 5.2.1)
+      activesupport (= 5.2.1)
+      arel (>= 9.0)
+    activestorage (5.2.1)
+      actionpack (= 5.2.1)
+      activerecord (= 5.2.1)
+      marcel (~> 0.3.1)
+    activesupport (5.2.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
-    arel (8.0.0)
-    aws-sdk (2.10.27)
-      aws-sdk-resources (= 2.10.27)
-    aws-sdk-core (2.10.27)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
+    arel (9.0.0)
+    ast (2.4.0)
+    aws-eventstream (1.0.1)
+    aws-partitions (1.105.0)
+    aws-sdk-core (3.30.0)
+      aws-eventstream (~> 1.0)
+      aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.10.27)
-      aws-sdk-core (= 2.10.27)
-    aws-sigv4 (1.0.1)
+    aws-sdk-kms (1.9.0)
+      aws-sdk-core (~> 3, >= 3.26.0)
+      aws-sigv4 (~> 1.0)
+    aws-sdk-s3 (1.21.0)
+      aws-sdk-core (~> 3, >= 3.26.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.0)
+    aws-sdk-sqs (1.7.0)
+      aws-sdk-core (~> 3, >= 3.26.0)
+      aws-sigv4 (~> 1.0)
+    aws-sigv4 (1.0.3)
+    bootsnap (1.3.2)
+      msgpack (~> 1.0)
     builder (3.2.3)
-    codeclimate-test-reporter (1.0.8)
-      simplecov (<= 0.13)
-    coderay (1.1.1)
+    codecov (0.1.13)
+      json
+      simplecov
+      url
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
     countries (2.1.4)
       i18n_data (~> 0.8.0)
@@ -166,143 +157,159 @@ GEM
     crass (1.0.4)
     deep_merge (1.2.1)
     diff-lcs (1.3)
-    docile (1.1.5)
-    domain_name (0.5.20170404)
+    docile (1.3.1)
+    domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
-    doorkeeper (4.2.6)
+    doorkeeper (5.0.1)
       railties (>= 4.2)
     erubi (1.7.1)
-    factory_bot (4.8.2)
+    factory_bot (4.11.1)
       activesupport (>= 3.0.0)
-    factory_bot_rails (4.8.2)
-      factory_bot (~> 4.8.2)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    foreman (0.84.0)
-      thor (~> 0.19.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    hashdiff (0.3.5)
+    hashdiff (0.3.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    httparty (0.15.6)
+    httparty (0.16.2)
       multi_xml (>= 0.5.2)
-    i18n (0.8.6)
+    i18n (1.0.1)
+      concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
-    jmespath (1.3.1)
+    jaro_winkler (1.5.1)
+    jmespath (1.4.0)
     json (2.1.0)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    method_source (0.8.2)
-    mime-types (2.99.3)
-    mini_mime (1.0.0)
+    marcel (0.3.3)
+      mimemagic (~> 0.3.2)
+    method_source (0.9.0)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2018.0812)
+    mimemagic (0.3.2)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    monetize (1.7.0)
-      money (~> 6.9)
-    money (6.9.0)
-      i18n (>= 0.6.4, < 0.9)
-    money-rails (1.9.0)
+    monetize (1.9.0)
+      money (~> 6.12)
+    money (6.12.0)
+      i18n (>= 0.6.4, < 1.1)
+    money-rails (1.12.0)
       activesupport (>= 3.0)
-      monetize (~> 1.7.0)
-      money (~> 6.9.0)
+      monetize (~> 1.9.0)
+      money (~> 6.12.0)
       railties (>= 3.0)
+    msgpack (1.2.4)
     multi_xml (0.6.0)
-    mustermann (1.0.0)
+    mustermann (1.0.3)
     netrc (0.11.0)
     nio4r (2.3.1)
-    nokogiri (1.8.2)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
-    okcomputer (1.17.2)
-    pg (0.21.0)
-    phony (2.16.3)
-    phony_rails (0.14.6)
+    okcomputer (1.17.3)
+    parallel (1.12.1)
+    parser (2.5.1.2)
+      ast (~> 2.4.0)
+    pg (1.1.3)
+    phony (2.16.5)
+    phony_rails (0.14.9)
       activesupport (>= 3.0)
       phony (> 2.15)
-    pry (0.10.4)
+    powerpack (0.1.2)
+    pry (0.11.3)
       coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    public_suffix (2.0.5)
-    puma (3.9.1)
+      method_source (~> 0.9.0)
+    public_suffix (3.0.3)
+    puma (3.12.0)
     rack (2.0.5)
-    rack-test (1.0.0)
+    rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (5.1.6)
-      actioncable (= 5.1.6)
-      actionmailer (= 5.1.6)
-      actionpack (= 5.1.6)
-      actionview (= 5.1.6)
-      activejob (= 5.1.6)
-      activemodel (= 5.1.6)
-      activerecord (= 5.1.6)
-      activesupport (= 5.1.6)
+    rails (5.2.1)
+      actioncable (= 5.2.1)
+      actionmailer (= 5.2.1)
+      actionpack (= 5.2.1)
+      actionview (= 5.2.1)
+      activejob (= 5.2.1)
+      activemodel (= 5.2.1)
+      activerecord (= 5.2.1)
+      activestorage (= 5.2.1)
+      activesupport (= 5.2.1)
       bundler (>= 1.3.0)
-      railties (= 5.1.6)
+      railties (= 5.2.1)
       sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
-    railties (5.1.6)
-      actionpack (= 5.1.6)
-      activesupport (= 5.1.6)
+    railties (5.2.1)
+      actionpack (= 5.2.1)
+      activesupport (= 5.2.1)
       method_source
       rake (>= 0.8.7)
-      thor (>= 0.18.1, < 2.0)
+      thor (>= 0.19.0, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.1)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rest-client (1.8.0)
+    rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
-    rspec-core (3.6.0)
-      rspec-support (~> 3.6.0)
-    rspec-expectations (3.6.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.2)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.6.0)
-    rspec-mocks (3.6.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.6.0)
-    rspec-rails (3.6.1)
+      rspec-support (~> 3.8.0)
+    rspec-rails (3.8.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 3.6.0)
-      rspec-expectations (~> 3.6.0)
-      rspec-mocks (~> 3.6.0)
-      rspec-support (~> 3.6.0)
-    rspec-support (3.6.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
+    rubocop (0.59.2)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.5, != 2.5.1.1)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    rubocop-rspec (1.30.0)
+      rubocop (>= 0.58.0)
+    ruby-progressbar (1.10.0)
     safe_yaml (1.0.4)
-    simplecov (0.13.0)
-      docile (~> 1.1.0)
+    simplecov (0.16.1)
+      docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
     sixarm_ruby_unaccent (1.2.0)
-    slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    thor (0.19.4)
+    thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
     torasup (0.2.1)
@@ -313,16 +320,18 @@ GEM
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.4)
+    unf_ext (0.0.7.5)
+    unicode-display_width (1.4.0)
     unicode_utils (1.4.0)
-    webmock (3.0.1)
+    url (0.3.2)
+    webmock (3.4.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-    websocket-driver (0.6.5)
+    websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    wisper-rspec (0.0.3)
+    wisper-rspec (1.1.0)
 
 PLATFORMS
   ruby
@@ -331,10 +340,10 @@ DEPENDENCIES
   aasm
   active_elastic_job!
   bitmask_attributes!
-  codeclimate-test-reporter (~> 1.0.0)
+  bootsnap
+  codecov
   doorkeeper
   factory_bot_rails
-  foreman
   money-rails
   okcomputer
   pg
@@ -342,26 +351,27 @@ DEPENDENCIES
   phony_rails
   pry
   puma
-  rails (= 5.1.6)
-  rails_12factor
+  rails (= 5.2.1)
   refile!
   refile-s3!
   responders
   rspec-rails
+  rubocop
+  rubocop-rspec
   shoulda-matchers!
   simplecov
   sinatra!
   somleng-twilio_http_client!
   spring
   spring-commands-rspec
-  twilreapi-active_biller!
-  twilreapi-active_biller-unicef_io!
-  twilreapi-active_call_router!
-  twilreapi-active_call_router-unicef_io!
+  torasup
   validate_url!
   webmock
   wisper!
   wisper-rspec
 
+RUBY VERSION
+   ruby 2.5.1p57
+
 BUNDLED WITH
-   1.16.1
+   1.16.2
