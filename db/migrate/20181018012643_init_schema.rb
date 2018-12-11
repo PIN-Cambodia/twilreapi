@@ -6,7 +6,7 @@ class InitSchema < ActiveRecord::Migration[5.2]
     create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
-      t.string "state", null: false
+      t.string "status", null: false
       t.jsonb "settings", default: {}, null: false
       t.integer "permissions", default: 0, null: false
     end
