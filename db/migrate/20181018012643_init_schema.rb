@@ -8,6 +8,7 @@ class InitSchema < ActiveRecord::Migration[5.2]
       t.datetime "updated_at", null: false
       t.string "state", null: false
       t.jsonb "settings", default: {}, null: false
+      t.integer "permissions", default: 0, null: false
     end
     create_table "aws_sns_messages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
       t.json "headers", default: {}, null: false
