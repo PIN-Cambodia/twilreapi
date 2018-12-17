@@ -14,7 +14,7 @@ kh:
           default:
             host: "27.109.112.80"
             prefix: false
-          "999999":
+          "9999":
             host: "52.74.249.4"
     mobitel:
       metadata:
@@ -22,7 +22,7 @@ kh:
           default:
             host: "103.193.204.17"
             prefix: false
-          "999999":
+          "9999":
             host: "52.74.249.4"
     metfone:
       metadata:
@@ -34,7 +34,7 @@ kh:
             host: "103.193.204.17"
             prefix: false
             caller_id: "095975802"
-          "999999":
+          "9999":
             host: "52.74.249.4"
 sl:
   operators:

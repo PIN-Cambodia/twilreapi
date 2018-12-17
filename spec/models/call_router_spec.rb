@@ -190,14 +190,17 @@ describe CallRouter do
     it "routes to the simulator" do
       # Cambodia Metfone (Simulator)
 
-      call_router = described_class.new(source: "999999")
+      call_router = described_class.new(
+        source: "999999",
+        source_matcher: /(\d{4}$)/
+      )
       call_router.destination = "+855882345678"
 
       result = call_router.routing_instructions
 
       assert_routing_instructions!(
         result,
-        source: "999999",
+        source: "9999",
         destination: "855882345678",
         dial_string_path: "external/855882345678@52.74.249.4"
       )
@@ -210,7 +213,7 @@ describe CallRouter do
 
       assert_routing_instructions!(
         result,
-        source: "999999",
+        source: "9999",
         destination: "85510234567",
         dial_string_path: "external/85510234567@52.74.249.4"
       )
@@ -223,7 +226,7 @@ describe CallRouter do
 
       assert_routing_instructions!(
         result,
-        source: "999999",
+        source: "9999",
         destination: "85512234567",
         dial_string_path: "external/85512234567@52.74.249.4"
       )
