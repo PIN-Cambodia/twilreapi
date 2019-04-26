@@ -20,7 +20,7 @@ kh:
       metadata:
         gateways:
           default:
-            host: "103.193.204.17"
+            host: "103.193.204.26"
             prefix: false
           "9999":
             host: "52.74.249.4"
@@ -31,7 +31,7 @@ kh:
             host: "175.100.32.29"
             prefix: false
           "1296":
-            host: "103.193.204.17"
+            host: "103.193.204.26"
             prefix: false
             caller_id: "095975802"
           "9999":

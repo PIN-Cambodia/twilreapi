@@ -58,7 +58,7 @@ describe CallRouter do
         result,
         source: "1294",
         destination: "85512345677",
-        dial_string_path: "external/012345677@103.193.204.17"
+        dial_string_path: "external/012345677@103.193.204.26"
       )
 
       # Cambodia (Metfone)
@@ -83,7 +83,7 @@ describe CallRouter do
         result,
         source: "095975802",
         destination: "855882345678",
-        dial_string_path: "external/0882345678@103.193.204.17"
+        dial_string_path: "external/0882345678@103.193.204.26"
       )
 
       # Unknown source
